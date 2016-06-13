@@ -439,11 +439,18 @@
             break;
         case JSTestCurrentVisualShow:
         {
-            
-            
+            if (!_visualTest) {
+                JSVisualAttentionTests *test = [JSVisualAttentionTests testWithModelArray:self.questionArray withDifficult:self.difcultLevel];
+                
+                [self.view addSubview:test];
+                
+                test.frame = self.view.bounds;
+                
+                test.delegate =self;
+                
+                self.visualTest = test;
+            }
             [self.visualTest show];
-            
-            
         }
             break;
         case JSTestCurrentVisualImmediate:
@@ -1105,7 +1112,7 @@
              */
             NSString *CPTTime;
             if (_testsList.CPTTrueCount == 0) {
-                CPTTime = @"";
+                CPTTime = @"0";
             }else{
                 CPTTime= [NSString stringWithFormat:@"%.3f s",_testsList.CPTTime/_testsList.CPTTrueCount];
             }

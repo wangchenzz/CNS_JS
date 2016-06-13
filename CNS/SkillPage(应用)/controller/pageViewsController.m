@@ -49,9 +49,8 @@
 }
 
 -(void)setUpPageControll{
-    NSDictionary *options =[NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]
-                                                       forKey: UIPageViewControllerOptionSpineLocationKey];
-    UIPageViewController *pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
+    NSDictionary *options =[NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]forKey:UIPageViewControllerOptionSpineLocationKey];
+    UIPageViewController *pageViewController = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
     pageViewController.delegate = self;
     pageViewController.dataSource = self;
     [[pageViewController view] setFrame:[[self view] bounds]];

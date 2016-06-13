@@ -51,6 +51,7 @@
 
 //下载失败的block
 
+
 @property (nonatomic,copy) void(^errorDolowdToDo)();
 
 +(INetworking*)shareNet;

@@ -8,6 +8,8 @@
 
 #import "JSRefreshTableViewController.h"
 
+#import "JSBallView.h"
+
 @interface JSRefreshTableViewController ()
 
 @end
@@ -29,7 +31,7 @@
     _tableView.tableFooterView = [[UIView alloc] init];;
     [self.view addSubview:_tableView];
     
-    _curpage = 0;
+    _curpage = 1;
     _isRefreshHeader = NO;
     _isRefreshFooter = NO;
     _isShowNoDataImage= NO;
@@ -66,7 +68,7 @@
         __weak __typeof__(self) weakSelf = self;
         if (_isRefreshFooter) {
             self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-                
+        
                 [weakSelf tableViewRefreshHeader];
                 
                 [weakSelf.tableView.mj_header beginRefreshing];
@@ -105,6 +107,14 @@
         }else{
 //            [self backRoundImageHide];
         }
+    }
+}
+
+
+- (void)autoRefreshHeader{
+    
+    if (self.isRefreshHeader) {
+        [self tableViewRefreshHeader];
     }
 }
 

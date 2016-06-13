@@ -65,6 +65,7 @@
 		048D57611CF434C0009A16BB /* answerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D57601CF434C0009A16BB /* answerModel.m */; };
 		048D57641CF4409A009A16BB /* detailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D57631CF4409A009A16BB /* detailInfoCell.m */; };
 		048D57671CF44616009A16BB /* detailBBSmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 048D57661CF44616009A16BB /* detailBBSmodel.m */; };
+		04A0690E1D06976C009CA4CC /* animationContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A0690D1D06976C009CA4CC /* animationContainView.m */; };
 		04A273C71C882D4600B9FAE1 /* JSVisualAttentionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A273C61C882D4600B9FAE1 /* JSVisualAttentionTests.m */; };
 		04A5DD051C8FF64800D31DB9 /* JSFgClickModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A5DD041C8FF64800D31DB9 /* JSFgClickModel.m */; };
 		04A5DD081C8FF85800D31DB9 /* SymbolDigitCodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A5DD071C8FF85800D31DB9 /* SymbolDigitCodingTests.m */; };
@@ -109,6 +110,8 @@
 		04E6C3111C89552800A92300 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6C30E1C89552800A92300 /* JSTabBarController.m */; };
 		04E6C3141C895DC300A92300 /* JSVisualAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6C3131C895DC300A92300 /* JSVisualAttentionModel.m */; };
 		04E6C3161C89800100A92300 /* ImageName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E6C3151C89800100A92300 /* ImageName.plist */; };
+		04FDF7CF1D07CC59004C3CFB /* git.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FDF7CE1D07CC59004C3CFB /* git.xcassets */; };
+		04FDF7D51D07EF74004C3CFB /* JSBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF7D41D07EF74004C3CFB /* JSBallView.m */; };
 		95E97B8D9D3F02446DAEC54C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC3A7BDF7FF8EE799389403 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -243,6 +246,8 @@
 		048D57631CF4409A009A16BB /* detailInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailInfoCell.m; sourceTree = "<group>"; };
 		048D57651CF44616009A16BB /* detailBBSmodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailBBSmodel.h; sourceTree = "<group>"; };
 		048D57661CF44616009A16BB /* detailBBSmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailBBSmodel.m; sourceTree = "<group>"; };
+		04A0690C1D06976C009CA4CC /* animationContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = animationContainView.h; sourceTree = "<group>"; };
+		04A0690D1D06976C009CA4CC /* animationContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = animationContainView.m; sourceTree = "<group>"; };
 		04A273C51C882D4600B9FAE1 /* JSVisualAttentionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVisualAttentionTests.h; sourceTree = "<group>"; };
 		04A273C61C882D4600B9FAE1 /* JSVisualAttentionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVisualAttentionTests.m; sourceTree = "<group>"; };
 		04A5DD031C8FF64800D31DB9 /* JSFgClickModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSFgClickModel.h; sourceTree = "<group>"; };
@@ -332,6 +337,9 @@
 		04E6C3121C895DC300A92300 /* JSVisualAttentionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSVisualAttentionModel.h; sourceTree = "<group>"; };
 		04E6C3131C895DC300A92300 /* JSVisualAttentionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSVisualAttentionModel.m; sourceTree = "<group>"; };
 		04E6C3151C89800100A92300 /* ImageName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImageName.plist; sourceTree = "<group>"; };
+		04FDF7CE1D07CC59004C3CFB /* git.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = git.xcassets; sourceTree = "<group>"; };
+		04FDF7D31D07EF74004C3CFB /* JSBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBallView.h; sourceTree = "<group>"; };
+		04FDF7D41D07EF74004C3CFB /* JSBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBallView.m; sourceTree = "<group>"; };
 		71E70B531ECE1EECF5159E97 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9EC3A7BDF7FF8EE799389403 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0FA04B649CDDFFBFEE87B6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -844,6 +852,7 @@
 				041FB96A1C86817800F35659 /* SAT-注意力转移测试 */,
 				041FB9641C86817800F35659 /* CPT-持续注意力测试 */,
 				04B0FED81C8419540020D1A5 /* Assets.xcassets */,
+				04FDF7CE1D07CC59004C3CFB /* git.xcassets */,
 				04B0FEDA1C8419540020D1A5 /* LaunchScreen.storyboard */,
 				04B0FEDD1C8419540020D1A5 /* Info.plist */,
 				04B0FECC1C8419540020D1A5 /* Supporting Files */,
@@ -917,8 +926,12 @@
 		04B0FF2C1C8420180020D1A5 /* viewCategory */ = {
 			isa = PBXGroup;
 			children = (
+				04FDF7D31D07EF74004C3CFB /* JSBallView.h */,
+				04FDF7D41D07EF74004C3CFB /* JSBallView.m */,
 				04B0FF2D1C8420610020D1A5 /* animationFlashLabel.h */,
 				04B0FF2E1C8420610020D1A5 /* animationFlashLabel.m */,
+				04A0690C1D06976C009CA4CC /* animationContainView.h */,
+				04A0690D1D06976C009CA4CC /* animationContainView.m */,
 				04011D4C1CCDEC9000C4F6D4 /* UIImage+Render.h */,
 				04011D4D1CCDEC9000C4F6D4 /* UIImage+Render.m */,
 				0480E8311D000266007304F8 /* JSUserManager.h */,
@@ -1090,6 +1103,7 @@
 				04B0FEDC1C8419540020D1A5 /* LaunchScreen.storyboard in Resources */,
 				0438855B1C90237300E1A3E9 /* diamondsXib.xib in Resources */,
 				04E6C3161C89800100A92300 /* ImageName.plist in Resources */,
+				04FDF7CF1D07CC59004C3CFB /* git.xcassets in Resources */,
 				04CE68181CEAB05700D922A5 /* buttonView.xib in Resources */,
 				04B0FED91C8419540020D1A5 /* Assets.xcassets in Resources */,
 				04B0FF021C841B1D0020D1A5 /* Default-568h@2x.png in Resources */,
@@ -1211,6 +1225,7 @@
 				043FD7111CF5927600B48DFC /* sendBBSController.m in Sources */,
 				0485BAE41CA50B740012CECD /* ShiftingAttentionModel.m in Sources */,
 				04B0FF151C841C720020D1A5 /* NSDate+Extension.m in Sources */,
+				04FDF7D51D07EF74004C3CFB /* JSBallView.m in Sources */,
 				04011D6C1CCDF13A00C4F6D4 /* MainPageViewController.m in Sources */,
 				0475605E1CC7504F00CFD065 /* INetworking.m in Sources */,
 				04D095971CE4131200DD4011 /* newsDetailController.m in Sources */,
@@ -1225,6 +1240,7 @@
 				04A70C661CEDAB6900B077D7 /* profileViewController.m in Sources */,
 				04A5DD051C8FF64800D31DB9 /* JSFgClickModel.m in Sources */,
 				04CE68331CEB0F4700D922A5 /* starView.m in Sources */,
+				04A0690E1D06976C009CA4CC /* animationContainView.m in Sources */,
 				04D0959D1CE4194400DD4011 /* commentCell.m in Sources */,
 				04B0FF3E1C8420610020D1A5 /* JSWriteAnimationView.m in Sources */,
 				0423B6AA1CE30E8E0018E753 /* JSNewsModel.m in Sources */,
@@ -1401,6 +1417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TALEGENES.JS.CNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1419,6 +1436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.TALEGENES.JS.CNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

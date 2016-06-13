@@ -231,7 +231,9 @@
         StroopModel *model = [[StroopModel alloc] init];
         
         model.textColor = [UIColor blackColor];
-        model.showTime = 1 + arc4random()%200/100.0;
+//        model.showTime = 1 + arc4random()%200/100.0;
+        model.showTime  = 1.5f;
+        
         model.showText = self.textArray[arc4random()%counts];
         
         return model;
@@ -240,7 +242,8 @@
         StroopModel *model = [[StroopModel alloc] init];
         
         model.textColor = self.colorArray[arc4random()%counts];
-        model.showTime = 1 + arc4random()%200/100.0;
+//        model.showTime = 1 + arc4random()%200/100.0;
+        model.showTime  = 1.5f;
         model.showText = self.textArray[arc4random()%counts];
         
         return model;

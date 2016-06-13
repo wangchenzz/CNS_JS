@@ -20,6 +20,8 @@
 
 @property (nonatomic,retain) UISegmentedControl *chooseSegment;
 
+@property (nonatomic,assign) NSInteger curPage;
+
 @end
 
 @implementation showLevelController
@@ -32,6 +34,7 @@
      *
      *  @return
      */
+    self.curPage = 1;
     
     self.tableView.separatorStyle = NO;
     self.navigationController.navigationBar.hidden = NO;
@@ -42,6 +45,7 @@
     if(!_isUpload){
     self.modelArray = self.normalModelArray;
     }
+    
     [self decide];
     
     [self returnPage];
@@ -89,14 +93,26 @@
         }
         
         [[INetworking shareNet] GET:addRecord withParmers:dic do:^(id returnObject, BOOL isSuccess) {
-            
-            JSLog(@"%d",isSuccess);
+            if (!isSuccess) {
+                [MBProgressHUD showError:@"上传失败"];
+            }
             
         }];
         
     }else{
         
         [self getRecords];
+        
+        __weak __typeof__(self)weakSelf = self;
+        
+        self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            
+            [weakSelf getRecords];
+            
+            [weakSelf.tableView.mj_footer beginRefreshing];
+            
+        }];
+
         
         
         _chooseSegment = [[UISegmentedControl alloc] initWithItems:@[@"标准测试",@"模块测试"]];
@@ -119,7 +135,7 @@
     
     dic[@"token"] = [[NSUserDefaults standardUserDefaults] valueForKey:@"token"];
     
-    dic[@"curPage"] = @"1";
+    dic[@"curPage"] = [NSString stringWithFormat:@"%ld",self.curPage];
     
     [[INetworking shareNet] GET:getRecord withParmers:dic do:^(id returnObject, BOOL isSuccess) {
         /**
@@ -306,7 +322,7 @@
                              */
                             NSString *CPTTime= dic[@"delayed_e"];
                             
-                            
+                            model.nameArray = @[@"-正确次数-",@"-错过次数-",@"-失误次数-",@"-反应时间-"];
                             model.valueArray = @[CPTTrueCount,CPTMissCount,CPTWrongCount,CPTTime];
                             
                             model.TestType = 7;
@@ -326,6 +342,10 @@
                 
                 
             }
+            [self.tableView.mj_footer endRefreshing];
+            
+            self.curPage ++;
+            
             [self.tableView reloadData];
         }
         

@@ -41,6 +41,7 @@
         
         
         [self.window makeKeyAndVisible];
+        
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(firstVisit) name:@"CNSgameHWMCD" object:nil];
         
         [self animationComeOn];
@@ -51,11 +52,10 @@
     
     [self decideVC];
     
-    [self animationComeOn];
-    
     return YES;
 }
 
+///Users/Mac/Desktop/ios_IM_sdk_V3.1.3
 
 -(JSTabBarController *)mainViewController{
     if (!_mainViewController) {
@@ -80,25 +80,34 @@
         self.window.rootViewController = lc;
         
         [self.window makeKeyAndVisible];
+        
+        [self animationComeOn];
+        
     
     }else{
         
+    __weak __typeof__(self) weakSelf = self;
     [[INetworking shareNet] GET:loginUrl withParmers:dic do:^(id returnObject, BOOL isSuccess) {
         NSDictionary *dic = (NSDictionary *)returnObject;
         if (isSuccess && [dic[@"msg"]isEqualToString:@"1"]) {
             
-            self.window.rootViewController = self.mainViewController;
+            weakSelf.window.rootViewController = self.mainViewController;
             
-            [self.window makeKeyAndVisible];
+            [weakSelf.window makeKeyAndVisible];
+            
+            [weakSelf animationComeOn];
         }else{
             
             [[NSUserDefaults standardUserDefaults]setValue:@"null" forKey:@"token"];
             
             loginViewController *lc = [[loginViewController alloc] init];
             
-            self.window.rootViewController = lc;
+            weakSelf.window.rootViewController = lc;
             
-            [self.window makeKeyAndVisible];
+            [weakSelf.window makeKeyAndVisible];
+            
+            [weakSelf animationComeOn];
+          
         }
     }];
     }

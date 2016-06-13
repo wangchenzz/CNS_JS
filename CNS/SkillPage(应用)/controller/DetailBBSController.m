@@ -16,6 +16,8 @@
 
 @property (nonatomic,assign) NSIndexPath *currentIndexPath;
 
+@property (nonatomic,assign) NSInteger curPage;
+
 @property (nonatomic,retain) inputCommentView *inputView;
 
 /**
@@ -53,11 +55,23 @@
     
     [self setUpTableView];
     
-    [self setUpBBSInfo];
+//    [self setUpBBSInfo];
     
     [self setComentButtonUp];
     
     [self setUpInputView];
+    
+    self.curPage = 1;
+    
+    __weak __typeof__(self) weakSelf = self;
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+        [weakSelf setUpBBSInfo];
+        
+        [weakSelf.tableView.mj_footer beginRefreshing];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +95,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
 
     
     UIImageView *backrounView = [[UIImageView alloc] init];
@@ -102,7 +118,7 @@
     
     dic[@"id"] = self.basicModel.num;
     
-    dic[@"curPage"] = @"1";
+    dic[@"curPage"] = [NSString stringWithFormat:@"%ld",self.curPage];
     
     [[INetworking shareNet] GET:getCardById withParmers:dic do:^(id returnObject, BOOL isSuccess) {
     
@@ -111,7 +127,7 @@
             return ;
         }
         
-        self.answerArray = [@[] mutableCopy];
+//        self.answerArray = [@[] mutableCopy];
         
         NSArray *answers = returnObject[@"list"];
         
@@ -139,11 +155,30 @@
             [model getFrame];
             
             [self.answerArray addObject:model];
+            
         }
+        
+        [self.tableView.mj_footer endRefreshing];
+        
+        if (answers.count == 0) {
+            
+            return;
+        }
+        
+        self.curPage ++;
         
         [self.tableView reloadData];
         
+        
     }];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self setUpBBSInfo];
+
 }
 
 

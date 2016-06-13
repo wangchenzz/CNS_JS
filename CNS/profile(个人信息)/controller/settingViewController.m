@@ -121,12 +121,11 @@
     
     UIAlertAction *action1 =[UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
     
+    __weak __typeof__(self) weakSelf = self;
+    
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"确认退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        
-        [self ntmgtc];
-        
-        
+        [weakSelf ntmgtc];
         
     }];
     

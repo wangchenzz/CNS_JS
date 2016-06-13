@@ -9,9 +9,11 @@
 #import "AppDelegate+lunchAnimation.h"
 
 
-static NSString * const Setp1key = @"animationKey";
+static NSString * const Setpkey = @"animationKey";
 
-static NSString * const Setp2key = @"animationKey";
+static void *mainImageKey = &mainImageKey;
+
+static void *wordsImageKey = &wordsImageKey;
 
 @implementation AppDelegate (lunchAnimation)
 
@@ -22,8 +24,6 @@ static NSString * const Setp2key = @"animationKey";
 -(void)doStep1{
     
     UIImageView *mainImageView = [[UIImageView alloc] init];
-    
-    mainImageView.tag = 1;
     
     mainImageView.image = [UIImage imageNamed:@"lunchBackRound"];
     
@@ -57,12 +57,13 @@ static NSString * const Setp2key = @"animationKey";
     
     animation.removedOnCompletion = NO;
 
-    [animation setValue:@"step1" forKey:Setp1key];
+    [animation setValue:@"step1" forKey:Setpkey];
     
     animation.fillMode = kCAFillModeBoth;
 
     [mainImageView.layer addAnimation:animation forKey:nil];
     
+    self.mainImageView = mainImageView;
     
 }
 
@@ -70,15 +71,13 @@ static NSString * const Setp2key = @"animationKey";
     /**
      出现图像的过渡动画:
      */
-    UIImageView *wordsImageView = [[UIImageView alloc] init];
-    
-    wordsImageView.tag = 2 ;
+    self.wordsImageView = [[UIImageView alloc] init];
     
     UIImage * image = [UIImage imageNamed:@"lunchWords"];
     
     CGRect bounds = {{0,0},image.size};
     
-    wordsImageView.bounds = bounds;
+    self.wordsImageView.bounds = bounds;
     
     CABasicAnimation *imageAnimation = [CABasicAnimation animationWithKeyPath:@"contents"];
     
@@ -90,21 +89,21 @@ static NSString * const Setp2key = @"animationKey";
     
     imageAnimation.duration = 1.0f;
     
-    [wordsImageView.layer addAnimation:imageAnimation forKey:nil];
+    [self.wordsImageView.layer addAnimation:imageAnimation forKey:nil];
     
     
-    wordsImageView.image = image;
+    self.wordsImageView.image = image;
 
     /**
      *  图像出现之后;先图像上移
      */
     CABasicAnimation *imageMoveAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
     
-    [[UIApplication sharedApplication].keyWindow addSubview:wordsImageView];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.wordsImageView];
     
-    wordsImageView.x = 500;
+    self.wordsImageView.x = 500;
     
-    wordsImageView.y = 100;
+    self.wordsImageView.y = 100;
     
     imageMoveAnimation.fromValue = @220;
     
@@ -138,34 +137,44 @@ static NSString * const Setp2key = @"animationKey";
     
     group.delegate = self;
     
-    [imageMoveAnimation setValue:@"step2" forKey:Setp2key];
+    [imageMoveAnimation setValue:@"step2" forKey:Setpkey];
     
-    [wordsImageView.layer addAnimation:imageMoveAnimation forKey:nil];
+    [self.wordsImageView.layer addAnimation:imageMoveAnimation forKey:nil];
     
-
+    
 }
+
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    UIWindow *key = [UIApplication sharedApplication].keyWindow;
     
-    UIView *view1 = [key viewWithTag:1];
-    
-    UIView *view2 = [key viewWithTag:2];
-    
-    
-    
-    if ([[anim valueForKey:Setp1key] isEqualToString:@"step1"]) {
+    if ([[anim valueForKey:Setpkey] isEqualToString:@"step1"]) {
         
         [self doStep2];
     
     }
-    if ([[anim valueForKey:Setp2key] isEqualToString:@"step2"]) {
+    if ([[anim valueForKey:Setpkey] isEqualToString:@"step2"]) {
         
-        [view1 removeFromSuperview];
-        [view2 removeFromSuperview];
+        [self.wordsImageView removeFromSuperview];
+        [self.mainImageView removeFromSuperview];
     
     }
 }
 
+#pragma mark - property
 
+-(UIImageView *)mainImageView{
+    return objc_getAssociatedObject(self, &mainImageKey);
+}
+
+-(void)setMainImageView:(UIImageView *)mainImageView{
+    objc_setAssociatedObject(self, &mainImageKey, mainImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(UIImageView *)wordsImageView{
+    return objc_getAssociatedObject(self, &wordsImageKey);
+}
+
+-(void)setWordsImageView:(UIImageView *)wordsImageView{
+    objc_setAssociatedObject(self, &wordsImageKey, wordsImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 @end

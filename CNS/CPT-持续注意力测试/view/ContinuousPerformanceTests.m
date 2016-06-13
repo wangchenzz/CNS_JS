@@ -57,6 +57,24 @@
         
         [self.selectArray addObject:word];
     }
+    
+    [self addWordBForCount:20 toArray:self.selectArray];
+}
+
+-(void)addWordBForCount:(NSInteger)count toArray:(NSMutableArray *)array{
+
+    if (!array) {
+        array = [NSMutableArray array];
+    }
+    NSInteger araryCount = [array count];
+    
+    for (int i = 0 ; i < count; i ++) {
+        NSInteger rollNum = arc4random()%araryCount;
+        
+        [array insertObject:@"b" atIndex:rollNum];
+        
+        araryCount ++;
+    }
 }
 
 -(UILabel*)worsLabel{

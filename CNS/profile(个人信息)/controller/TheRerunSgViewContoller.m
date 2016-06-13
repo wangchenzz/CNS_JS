@@ -41,7 +41,7 @@
 //    [buton setTitle:@"反馈" forState: UIControlStateNormal];
 //    
 //    [buton addTarget:self action:@selector(returnSEG:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *barbut = [UIBarButtonItem itemWithTitle:@"反" andImage: nil targat:self action:@selector(returnSEG:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barbut = [UIBarButtonItem itemWithTitle:@"攥写" andImage: nil targat:self action:@selector(returnSEG:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = barbut;
 }
 

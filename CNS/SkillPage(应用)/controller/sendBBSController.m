@@ -30,6 +30,9 @@
 
 @property (nonatomic,assign) CGFloat contentHeight;
 
+
+@property (nonatomic,assign) CGFloat HidecontentHeight;
+
 @property (nonatomic,assign) BOOL isAnimation;
 
 
@@ -292,7 +295,14 @@
     
     _kbHeight = keyboardEndFrameWindow.size.height;
     
-    self.commentView.height = self.contentHeight - self.kbHeight;
+    self.commentView.height = self.HidecontentHeight;
+}
+
+-(void)setKbHeight:(CGFloat)kbHeight{
+    if (_kbHeight!=kbHeight) {
+        
+        self.HidecontentHeight = self.contentHeight - self.kbHeight;
+    }
 }
 
 

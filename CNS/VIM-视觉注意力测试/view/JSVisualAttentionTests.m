@@ -166,7 +166,8 @@
     }else{
         showImage = [UIImage imageNamed:self.model.theTestsAllImageArray[self.currentImageCount]];
     }
-
+    
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.showImageView startImageViewAnimationImage:showImage];
         
@@ -184,7 +185,6 @@
             }
             return;
         }
- 
     });
 
 }

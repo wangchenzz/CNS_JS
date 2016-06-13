@@ -340,7 +340,7 @@
     self.currentTime += 0.01;
     self.totalTime += 0.01;
     
-    if (self.currentTime >=2&&self.currentTime < 2.2) {
+    if (self.currentTime >=3&&self.currentTime < 3.2) {
         self.leftView.hidden = YES;
         self.rightView.hidden = YES;
         self.referenceView.hidden = YES;
@@ -362,7 +362,7 @@
         }
     
     
-    if (self.currentTime >= 2.2) {
+    if (self.currentTime >= 3.2) {
         self.currentCounts ++;
         
         

@@ -12,6 +12,8 @@
 
 #import "DetailBBSController.h"
 
+#import "JSBallView.h"
+
 @interface BBSControllerView ()
 
 @property (nonatomic,assign) NSInteger currentPage;
@@ -34,10 +36,6 @@
     
     
     [self setUpTablevewBackColor];
-    
-    
-    [self loadBBSInfo];
-    
 
     [self setUpReFresh];
 }
@@ -54,13 +52,36 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (_dataSourceModelArray.count == 0&&!_isLoading) {
-        [self loadBBSInfo];
+        [self loadBBSInfoForHeader:YES];
     }
 }
 
 -(void)setUpReFresh{
-
-     MJRefreshStateHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadBBSInfo)];
+    __weak __typeof__(self) weakSelf = self;
+    /**
+     *  下拉刷新
+     */
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingBlock:^{
+        
+        [weakSelf loadBBSInfoForHeader:YES];
+        
+        [weakSelf.tableView.mj_header beginRefreshing];
+        
+    }];
+    NSMutableArray *gifArray = [NSMutableArray array];
+    for (int i = 1; i < 11 ; i ++) {
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i]];
+        [gifArray addObject:image];
+    }
+    
+    header.automaticallyChangeAlpha = YES;
+    
+//    [header setImages:@[] forState:MJRefreshStateIdle]; /** 普通闲置状态 */
+//    [header setImages:@[] forState:MJRefreshStatePulling]; /** 松开就可以进行刷新的状态 */
+//    [header setImages:gifArray forState:MJRefreshStateRefreshing]; /** 正在刷新中的状态 */
+    
     
     [header setTitle:@"拖拽以刷新" forState:MJRefreshStateIdle];
     [header setTitle:@"放开我就刷新" forState:MJRefreshStatePulling];
@@ -73,13 +94,29 @@
     
     // 设置颜色
     header.stateLabel.textColor = [UIColor whiteColor];
+    
     self.tableView.mj_header = header;
+    
+    /**
+     *  上拉刷新
+     */
+    
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        
+        [weakSelf loadBBSInfoForHeader:NO];
+        
+        [weakSelf.tableView.mj_footer beginRefreshing];
+    }];
 }
 
 
--(void)loadBBSInfo{
+-(void)loadBBSInfoForHeader:(BOOL)isHeader{
     
     self.isLoading = YES;
+    
+    if (isHeader) {
+        self.currentPage = 1;
+    }
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[@"curPage"] = [NSString stringWithFormat:@"%ld",self.currentPage];
@@ -98,13 +135,12 @@
             self.isLoading = NO;
             return ;
         }
-        
-        self.dataSourceModelArray = [@[] mutableCopy];
+        if (isHeader) {
+            [self.dataSourceModelArray removeAllObjects];
+        }
     
         NSArray *listArray = returnObject[@"list"];
         for (NSDictionary *dic in listArray) {
-            
-//            NSLog(@"%@",dic);
             JSBbsInfoModel *model = [[JSBbsInfoModel alloc] init];
             model.tureLoginName = dic[@"loginName"];
             model.loginName = dic[@"nickName"];
@@ -119,8 +155,14 @@
             [self.dataSourceModelArray addObject:model];
         }
         
-        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
         [self.tableView.mj_header endRefreshing];
+        
+        if (listArray.count == 0) {
+            return;
+        }
+        self.currentPage ++;
+        [self.tableView reloadData];
         self.isLoading = NO;
         
     }];

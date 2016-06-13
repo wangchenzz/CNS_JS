@@ -15,4 +15,10 @@
 + (void)loadSuccessCompletion:(void (^)(BOOL))completion;
 
 + (void)loadFailCompletion:(void (^)(BOOL))completion;
+
+
+
+
+
+
 @end

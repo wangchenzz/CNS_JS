@@ -41,13 +41,13 @@
         
         self.swipRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipImage:)];
         self.swipLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipImage:)];
-    
+        
         
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, self.width, 40)];
         
         UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.height - 40, self.width, 40)];
-
+        
         self.tipsLabel = titleLabel;
         
         self.blackImage = blackView;
@@ -76,9 +76,7 @@
 
 -(void)layoutSubviews{
     self.tipsLabel.frame = CGRectMake(30, 0, self.width, 40);
-    
     self.blackImage.frame = CGRectMake(0, self.height - 40, self.width, 40);
-
 }
 
 +(instancetype)getScroll{
@@ -87,18 +85,20 @@
 
 -(void)showAnimation{
     [self sd_setImageWithURL:[NSURL URLWithString:[self.delegate animationScroll:self imageForIndex:self.currentIndex]]];
-    
-    
     [self.tipsLabel setTextColor:[UIColor whiteColor]];
-    
     self.tipsLabel.text = [self.delegate animationScroll:self textForIndex:self.currentIndex];
-    
     if (_actionTimer) {
-        
     }else{
         [self actionTimer];
     }
 }
+
+//51
+//7
+//38  13
+//6
+//44
+
 
 -(NSTimer *)actionTimer{
     if (!_actionTimer) {
@@ -112,7 +112,6 @@
 }
 
 -(void)animationOn{
-    
     CATransition *transition = [CATransition animation];
     
     transition.duration = 0.8f;
@@ -120,7 +119,7 @@
     transition.subtype = @"fromRight";//type为fade的时候subtype无效
     
     [self.layer addAnimation:transition forKey:@"animation"];
-
+    
     self.currentIndex ++;
     
     if (self.currentIndex >= [self.delegate numberOfImageInScrollView:self] ) {
@@ -141,18 +140,14 @@
     [self.layer addAnimation:transition forKey:@"animation"];
     
     self.currentIndex --;
-    
     if (self.currentIndex < 0) {
         self.currentIndex = [self.delegate numberOfImageInScrollView:self] -1;
     }
-    
-    self.image = [self.delegate animationScroll:self imageForIndex:self.currentIndex];
+    [self sd_setImageWithURL:[NSURL URLWithString:[self.delegate animationScroll:self imageForIndex:self.currentIndex]]];
     self.tipsLabel.text = [self.delegate animationScroll:self textForIndex:self.currentIndex];
 }
 
 -(void)swipImage:(UISwipeGestureRecognizer *)swip{
-    
-    
     if (swip.direction == UISwipeGestureRecognizerDirectionLeft) {
         [self animationOn];
     }else if(swip.direction == UISwipeGestureRecognizerDirectionRight){
@@ -161,7 +156,6 @@
 }
 
 -(void)clickImage{
-
     if ([self.delegate respondsToSelector:@selector(animationScroll:didClickInIndex:)]) {
         [self.delegate animationScroll:self didClickInIndex:self.currentIndex];
     }

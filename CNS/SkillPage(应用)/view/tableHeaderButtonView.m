@@ -162,9 +162,6 @@
     for (UIButton *but in self.buttonArray) {
         but.centerY = _mainScrollView.centerY;
         
-        
-        NSLog(@"%@",self.buttonArray);
-        
     }
     sss = self.bounds.size;
 

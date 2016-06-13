@@ -10,6 +10,11 @@
 
 @interface animationFlashLabel : UILabel
 
+
+/**
+ * 一个一个出现字的 label;
+ */
+
 typedef enum
 {
     VerticalAlignmentTop = 0, // default

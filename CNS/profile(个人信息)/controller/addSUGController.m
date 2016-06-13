@@ -33,8 +33,9 @@
     if (!self.commentView.text.length) {
         [MBProgressHUD showError:@"未填写任何内容"];
     }else{
-        
         NSMutableDictionary *dic = [[JSUserManager shareManager] getUserDic];
+        [[INetworking shareNet] setErrorDolowdToDo:^{
+        }];
         
         dic[@"context"] = self.commentView.text;
         
@@ -43,7 +44,6 @@
             if (isSuccess) {
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
-                
                 [MBProgressHUD showError:@"发送失败"];
             }
         }];

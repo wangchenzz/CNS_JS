@@ -8,13 +8,13 @@
 
 #import "JSNewVisionViewControler.h"
 
+#import "animationContainView.h"
+
 @interface JSNewVisionViewControler ()<UIScrollViewDelegate>
 
 @property (nonatomic,weak) UIScrollView *scrollview;
 
-
 @property (nonatomic,weak) UIPageControl *pagecontrol;
-
 
 @property (nonatomic,retain) NSArray * imageAry;
 
@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.imageAry = @[@"faceImage",@"faceImage",@"faceImage",@"faceImage"];
+    self.imageAry = @[@"lunchBackRound",@"lunchBackRound",@"lunchBackRound",@"lunchBackRound"];
     
     UIScrollView *scrollview = [[UIScrollView alloc]init];
     
@@ -60,9 +60,15 @@
     self.pagecontrol = pageControl;
     
     for (int i = 0; i < self.imageAry.count; i++) {
-        UIImageView *inImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width*i, 0, self.view.width, self.view.height)];
+//        UIImageView *inImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width*i, 0, self.view.width, self.view.height)];
+//        
+//        inImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imageAry[i]]];
+
+        animationContainView *inImage = [[animationContainView alloc] init];
         
-        inImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imageAry[i]]];
+        [inImage setFrame:CGRectMake(self.view.width*i, 0, self.view.width, self.view.height)];
+        inImage.picture.image =[UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imageAry[i]]];
+        
         
         if (i == self.imageAry.count - 1) {
             
@@ -73,9 +79,9 @@
     }
 }
 
--(void)addButton:(UIImageView*)imageView{
+-(void)addButton:(animationContainView*)imageView{
     
-    imageView.userInteractionEnabled = YES;
+//    imageView.userInteractionEnabled = YES;
     
     UIButton*button = [[UIButton alloc]init];
     
@@ -115,6 +121,12 @@
     // 四舍五入计算出页码
     self.pagecontrol.currentPage = (int)(page + 0.5);
     
+    for ( animationContainView*subView in self.scrollview.subviews) {
+        
+        if ([subView respondsToSelector:@selector(offset)] ) {
+            [subView offset];
+        }
+    }
 }
 
 

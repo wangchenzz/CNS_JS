@@ -10,6 +10,14 @@
 
 @interface AppDelegate (lunchAnimation)
 
+
+
+
+@property (nonatomic,retain) UIImageView *wordsImageView;
+
+
+@property (nonatomic,retain) UIImageView *mainImageView;
+
 -(void)animationComeOn;
 
 @end
