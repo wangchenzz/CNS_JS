@@ -28,9 +28,14 @@
 
 @property (nonatomic,retain) UITextView *commentView;
 
+/**
+ *  原本的高度
+ */
 @property (nonatomic,assign) CGFloat contentHeight;
 
-
+/**
+ *  键盘起来了的高度
+ */
 @property (nonatomic,assign) CGFloat HidecontentHeight;
 
 @property (nonatomic,assign) BOOL isAnimation;
@@ -195,6 +200,8 @@
         
         self.commentView.y = CGRectGetMaxY(self.typeButton.frame) + yBJ;
         
+//        self.commentView.
+        
         [self.view addSubview:self.commentView];
         
         self.contentHeight = self.commentView.height;
@@ -293,13 +300,15 @@
     
     [[notification.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue: &keyboardEndFrameWindow];
     
-    _kbHeight = keyboardEndFrameWindow.size.height;
+    self.kbHeight = keyboardEndFrameWindow.size.height;
     
     self.commentView.height = self.HidecontentHeight;
 }
 
 -(void)setKbHeight:(CGFloat)kbHeight{
     if (_kbHeight!=kbHeight) {
+        
+        _kbHeight = kbHeight;
         
         self.HidecontentHeight = self.contentHeight - self.kbHeight;
     }

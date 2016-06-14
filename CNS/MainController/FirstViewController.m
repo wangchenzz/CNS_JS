@@ -47,6 +47,9 @@
 
 @property (nonatomic,retain) UIButton *beginButton;
 
+
+@property (nonatomic,retain) UIButton *returnButton;
+
 @property (nonatomic,strong) animationFlashLabel *titleLabel;
 
 @property (nonatomic,strong) animationFlashLabel *messageLabel;
@@ -106,6 +109,14 @@
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     
     
+    [self setButtonForVc];
+    
+    
+    
+}
+
+
+-(void)setButtonForVc{
     UIButton *beginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     beginButton.height = 60;
@@ -128,9 +139,32 @@
     
     self.testsList = [[JSTestsList alloc] init];
     
-    //    self.JSTestCurrentState = JSTestCurrentContinuousPerformanceTests;
     
     
+    UIButton *returnButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    returnButton.height = 60;
+    
+    returnButton.width = 180;
+    
+    returnButton.centerX = self.view.centerX;
+    
+    returnButton.centerY = self.view.centerY + returnButton.height * 1.5;
+    
+    [returnButton setBackgroundColor:[UIColor redColor]];
+    
+    [self.view addSubview:returnButton];
+    
+    [returnButton setTitle:@"返回" forState:UIControlStateNormal];
+    
+    [returnButton addTarget:self action:@selector(returnToLast) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.returnButton = returnButton;
+}
+
+-(void)returnToLast{
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(instancetype)initWithIsModule:(BOOL)mo andWithState:(JSTestCurrentState )state andWithArray:(NSArray *)array andWithdifcultLevel:(NSInteger)level{
@@ -150,6 +184,8 @@
 
 
 -(void)clickIn{
+    
+    [self.returnButton removeFromSuperview];
     
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
