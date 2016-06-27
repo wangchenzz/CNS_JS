@@ -14,7 +14,9 @@
 
 #import "TheRerunSgViewContoller.h"
 
-@interface profileViewController ()<UITableViewDataSource, UITableViewDelegate>
+#import <AVFoundation/AVFoundation.h>
+
+@interface profileViewController ()<UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -34,6 +36,9 @@
 @property (nonatomic, retain) UIImage *oldBackNaviIm;
 
 @property (nonatomic, retain) NSMutableArray *ary;
+
+
+@property (nonatomic,retain) UIView *sourceViewClear;
 
 
 @property (nonatomic, assign) BOOL isPushing;
@@ -138,6 +143,16 @@
     icon.layer.borderWidth = 1.0f;
     icon.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [self.headerContentView addSubview:icon];
+    
+    
+    /**
+     *  更改头像
+     */
+    icon.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeHeaderImage)];
+    
+    [icon addGestureRecognizer:tap];
+    
     self.icon = icon;
     
     UILabel *label = [[UILabel alloc] init];
@@ -187,7 +202,6 @@
     self.tableView.tableHeaderView = headerView;;
     
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
 }
 
 -(void)setNavi{
@@ -403,6 +417,156 @@
     
     [self setNavi];
 }
+
+-(void)changeHeaderImage{
+    UIAlertController *quitControl = [UIAlertController alertControllerWithTitle:@"更改头像" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    //    quitControl.title = @"退出登录!";
+    //    quitControl.message = @"请注意,一旦退出登录,你将无法再进行任何操作";
+    
+    BOOL isCamera = NO;
+    
+    BOOL isLibray = NO;
+    
+    BOOL isAlbum = NO;
+    
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        NSLog(@"支持相机");
+        isCamera = YES;
+    }
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        NSLog(@"支持图库");
+        isLibray = YES;
+    }
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
+    {
+        NSLog(@"支持相片库");
+        isAlbum = YES;
+    }
+    
+    UIAlertAction *action1 =[UIAlertAction actionWithTitle:@"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (isCamera) {
+            
+            [self ModelImagePickerWithSourceType:UIImagePickerControllerSourceTypeCamera];
+        }else{
+            
+            [MBProgressHUD showError:@"无法调出相机"];
+        }
+        
+    }];
+    
+    
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"从相册选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if (isAlbum||isLibray) {
+            
+            UIImagePickerControllerSourceType sourcesType =UIImagePickerControllerSourceTypePhotoLibrary;
+            
+            [self ModelImagePickerWithSourceType:sourcesType];
+        }else{
+            
+            [MBProgressHUD showError:@"无法调出相册"];
+        }
+        
+    }];
+    
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:nil];
+    
+    [quitControl addAction:action1];
+    
+    [quitControl addAction:action2];
+    
+    [quitControl addAction:actionCancel];
+    
+    UIPopoverPresentationController *popover = quitControl.popoverPresentationController;
+    if (popover) {
+        
+        self.sourceViewClear = [[UIView alloc] initWithFrame:CGRectMake(self.icon.centerX, CGRectGetMaxY(self.icon.frame), 300, 100)];
+        [self.view addSubview:self.sourceViewClear];
+        
+        popover.sourceView = self.sourceViewClear;
+        
+    }
+    
+    [self presentViewController:quitControl animated:YES completion:nil];
+    
+}
+
+-(void)ModelImagePickerWithSourceType:(UIImagePickerControllerSourceType) sourcestype{
+    
+    UIImagePickerController* picker = [[UIImagePickerController alloc]init];
+    picker.view.backgroundColor = [UIColor orangeColor];
+    
+    UIImagePickerControllerSourceType sourcheType = sourcestype;
+    
+    //    UIImagePickerControllerSourceType sourcheType = UIImagePickerControllerSourceTypeSavedPhotosAlbum | UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.sourceType = sourcheType;
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark - imagePikerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    UIImage *pickerImage = info[@"UIImagePickerControllerOriginalImage"];
+    
+    /**
+     *
+     */
+    NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
+    AVAsset *asset = [AVURLAsset URLAssetWithURL:videoURL options:info];
+    NSArray *tracks = [asset tracksWithMediaType:AVMediaTypeVideo];
+    //判断是否含有视频轨道
+    BOOL hasVideoTrack = [tracks count] > 0;
+    if (hasVideoTrack) {
+        [picker dismissViewControllerAnimated:YES completion:^{
+          
+            [MBProgressHUD showError:@"无法添加视频"];
+            
+        }];
+        return;
+    }
+    
+    /**
+     *
+     */
+    
+    self.icon.image = pickerImage;
+    
+    [self uploadImage:pickerImage];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+#pragma mark - upload image
+-(void)uploadImage:(UIImage *)pikerImage{
+    
+    NSData *imageData = UIImageJPEGRepresentation(pikerImage, 0.5f);
+    
+    NSMutableDictionary *valueDic = [[JSUserManager shareManager] getUserDic];
+    
+    valueDic[@"img"] = imageData;
+    
+    [[INetworking shareNet] uploadImageWithName:@"uploadFirstImage" URLString:uploadHeaderImage imageData:imageData passCode:@"file" success:^(id returnObject) {
+        NSLog(@"%@",returnObject);
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 
 
 @end

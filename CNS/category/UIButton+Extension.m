@@ -29,7 +29,7 @@ static void *buttonKey = &buttonKey;
     addBlock add = objc_getAssociatedObject(self, &buttonKey);
     
     if (add) {
-        add();
+        add(self);
     }
 }
 

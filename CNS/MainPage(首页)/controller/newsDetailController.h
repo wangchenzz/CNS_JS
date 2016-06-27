@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "JSRefreshTableViewController.h"
+
 #import "JSNewsModel.h"
 
 #import "JSNewsFrameModel.h"
@@ -15,7 +17,7 @@
 
 
 
-@interface newsDetailController : UITableViewController
+@interface newsDetailController : JSRefreshTableViewController
 
 @property (nonatomic,strong) JSNewsModel *currentModel;
 

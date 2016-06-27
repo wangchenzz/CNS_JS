@@ -84,7 +84,7 @@
     normalAttri[NSFontAttributeName] = JSFont(12);
     
     normalAttri[NSForegroundColorAttributeName] = [UIColor grayColor];
-    
+
     //设置选中状态下的tabbaritem的字体；
     NSMutableDictionary *selectAttri = [NSMutableDictionary dictionary];
     

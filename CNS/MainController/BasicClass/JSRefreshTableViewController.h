@@ -32,8 +32,5 @@
 
 -(void)tableViewDidFinshRefresh:(BOOL)isHeader reload:(BOOL)load;
 
-//-(void)backRoundImageShow;
-//
-//-(void)backRoundImageHide;
 
 @end

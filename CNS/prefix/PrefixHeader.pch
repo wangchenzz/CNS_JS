@@ -37,8 +37,12 @@
 #endif
 
 
+#define WeakObject(o) __weak __typeof(o) o##Weak = o;
+
 
 #import "testBaseView.h"
+
+#import "NSString+encodeText.h"
 
 #import "NSString+Bounding.h"
 

@@ -20,34 +20,40 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic,assign) BOOL isAnimation;
+
 @property (nonatomic,retain) JSTabBarController *mainViewController;
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
-    if ([self decideIsNewVisionCome]) {
-        /**
-         *  确定显示新版本的更新
-         */
-        JSNewVisionViewControler *vc = [[JSNewVisionViewControler alloc] init];
-        
-        self.window.rootViewController =vc;
-        
-        
-        [self.window makeKeyAndVisible];
-        
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(firstVisit) name:@"CNSgameHWMCD" object:nil];
-        
-        [self animationComeOn];
-        
-        return YES;
-    }
+//    _isAnimation = YES;
+//    
+//    /**
+//     *  先判断是否是新的版本,  1.是新版本就进入新版界面. 要求登录 进入.....
+//     */
+//    
+//    if ([self decideIsNewVisionCome]) {
+//        /**
+//         *  确定显示新版本的更新
+//         */
+//        _isAnimation = NO;
+//        JSNewVisionViewControler *vc = [[JSNewVisionViewControler alloc] init];
+//        
+//        self.window.rootViewController =vc;
+//        
+//        
+//        [self.window makeKeyAndVisible];
+//        
+//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(firstVisit) name:@"CNSgameHWMCD" object:nil];
+//        
+//        return YES;
+//    }
     
     
     [self decideVC];
@@ -72,8 +78,9 @@
     
     dic[@"token"] = [[NSUserDefaults standardUserDefaults]valueForKey:@"token"];
     
-    
-    if ([dic[@"token"] isEqualToString:@"null"]) {
+    NSString *tokenStr = dic[@"token"];
+
+    if ([tokenStr isEqualToString:@"null"] || !tokenStr.length) {
         
         loginViewController *lc = [[loginViewController alloc] init];
         
@@ -81,35 +88,40 @@
         
         [self.window makeKeyAndVisible];
         
-        [self animationComeOn];
+//        if (_isAnimation) {
+////            [self animationComeOn];
+//        }
         
-    
     }else{
         
-    __weak __typeof__(self) weakSelf = self;
-    [[INetworking shareNet] GET:loginUrl withParmers:dic do:^(id returnObject, BOOL isSuccess) {
-        NSDictionary *dic = (NSDictionary *)returnObject;
-        if (isSuccess && [dic[@"msg"]isEqualToString:@"1"]) {
-            
-            weakSelf.window.rootViewController = self.mainViewController;
-            
-            [weakSelf.window makeKeyAndVisible];
-            
-            [weakSelf animationComeOn];
-        }else{
-            
-            [[NSUserDefaults standardUserDefaults]setValue:@"null" forKey:@"token"];
-            
-            loginViewController *lc = [[loginViewController alloc] init];
-            
-            weakSelf.window.rootViewController = lc;
-            
-            [weakSelf.window makeKeyAndVisible];
-            
-            [weakSelf animationComeOn];
-          
-        }
-    }];
+        __weak __typeof__(self) weakSelf = self;
+        [[INetworking shareNet] GET:loginUrl withParmers:dic do:^(id returnObject, BOOL isSuccess) {
+            NSDictionary *dic = (NSDictionary *)returnObject;
+            if (isSuccess && [dic[@"msg"]isEqualToString:@"1"]) {
+                
+                weakSelf.window.rootViewController = self.mainViewController;
+                
+                [weakSelf.window makeKeyAndVisible];
+                
+//                if (_isAnimation) {
+//                    [self animationComeOn];
+//                }
+                
+            }else{
+                
+                [[NSUserDefaults standardUserDefaults]setValue:@"null" forKey:@"token"];
+                
+                loginViewController *lc = [[loginViewController alloc] init];
+                
+                weakSelf.window.rootViewController = lc;
+                
+                [weakSelf.window makeKeyAndVisible];
+                
+//                if (_isAnimation) {
+////                    [self animationComeOn];
+//                }
+            }
+        }];
     }
 }
 
@@ -133,6 +145,15 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window{
+    
+    /**
+     *  禁止 iPad 横屏;
+     */
+    return UIInterfaceOrientationMaskPortrait;
+    
 }
 
 @end

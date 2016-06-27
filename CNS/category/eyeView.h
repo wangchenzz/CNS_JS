@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 /**
  *  渐变的眼睛动画,使用了贝塞尔曲线和 cashapelayer 完成.
  */
@@ -19,10 +20,10 @@
  */
 @property (nonatomic ,assign) float value;
 
-
 /**
  *  眼睛的颜色;
  */
 @property (nonatomic ,retain) UIColor *eyeColor;
+
 
 @end

@@ -15,6 +15,47 @@ static INetworking *network;
 
 static BOOL isNetWorking = YES;
 
+NSString * const basicUrlStr = @"http://www.yueqiao.org/SSM";
+
+NSString * const loginUrl = @"http://www.yueqiao.org/SSM/user/getLogin";
+
+
+NSString * const loginUrlForVisitor = @"http://www.yueqiao.org/SSM/user/getLogin2";
+
+NSString * const newsUrl = @"http://www.yueqiao.org/SSM/news/getNewsByType";
+
+NSString * const DetailNews = @"http://www.yueqiao.org/SSM/news/selectNewById";
+
+NSString * const LikeAddUrl = @"http://www.yueqiao.org/SSM/news/addZan";
+
+NSString * const addComment = @"http://www.yueqiao.org/SSM/comment/addComment";
+
+NSString * const getQustType = @"http://www.yueqiao.org/SSM/suject/getSubjectByType";
+
+NSString * const addRecord = @"http://www.yueqiao.org/SSM/record/addRecord";
+
+NSString * const getRecord = @"http://www.yueqiao.org/SSM/record/getRecordByloginName";
+
+
+NSString * const getCard = @"http://www.yueqiao.org/SSM/card/getCardByType";
+
+NSString * const getCardById = @"http://www.yueqiao.org/SSM/card/selectCardById";
+
+NSString * const addPlunge = @"http://www.yueqiao.org/SSM/plunge/addPlunge";
+
+
+NSString * const addAnser = @"http://www.yueqiao.org/SSM/plunge/insertPlungeHuifu";
+
+
+NSString * const addCard = @"http://www.yueqiao.org/SSM/card/addCard";
+
+NSString * const getPersonBBs = @"http://www.yueqiao.org/SSM/card/getCardByLoginName";
+
+NSString * const getLeavemsgByPage = @"http://www.yueqiao.org/SSM/leavemsg/getLeavemsgByPage";
+
+NSString * const addSug = @"http://www.yueqiao.org/SSM/leavemsg/addleavemsg";
+
+
 
 @implementation INetworking
 
@@ -78,7 +119,9 @@ static BOOL isNetWorking = YES;
     return network;
 }
 
--(void)GET:(NSString*)URLString withParmers:(NSDictionary *)parmers do:(void(^)(id returnObject,BOOL isSuccess))myblok;{
+-(void)GET:(NSString*)URLString withParmers:(NSDictionary *)parmers do:(void(^)(id returnObject,BOOL isSuccess))myblok{
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     
@@ -89,8 +132,11 @@ static BOOL isNetWorking = YES;
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
     [session GET:URLString parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         myblok(responseObject,YES);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
          myblok(error,NO);
     }];
 }
@@ -137,21 +183,30 @@ static BOOL isNetWorking = YES;
 
 }
 
-// 上传的方法’
 
--(void)uploadImage{
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:@"http://example.com/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+/**
+ *  上传图片
+ *
+ *  @param name      图片名字
+ *  @param URLString  url
+ *  @param imageData  图片 data
+ *  @param code       上传密码
+ *  @param success   成功回调
+ *  @param failure   失败回调   
+ */
+-(void)uploadImageWithName:(NSString *)name URLString:(NSString *)URLString imageData:(NSData *)imageData passCode:(NSString *)code success:(void (^)(id returnObject))success failure:(void (^)(NSError * error))failure{
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:URLString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
-        [formData appendPartWithFileData:[NSData data] name:@"abc" fileName:@"文件名" mimeType:@"image/jpeg"];
+        [formData appendPartWithFileData:imageData name:code fileName:name mimeType:@"image/jpeg"];
     } error:nil];
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
-            JSLog(@"%@",error);
+            failure(error);
         } else {
-            JSLog(@"%@ %@", response, responseObject);
+            success(responseObject);
         }
     }];
     [uploadTask resume];

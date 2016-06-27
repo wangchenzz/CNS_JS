@@ -134,7 +134,6 @@
      */
     
     self.totalHeight = CGRectGetMaxY(self.likeTooButRect)+10*3;
-
 }
 
 

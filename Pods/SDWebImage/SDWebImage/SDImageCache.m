@@ -33,7 +33,9 @@
 }
 
 @end
-
+/**
+ *  缓存时间为一周的话, 就过于长了. 应该每天都清洗
+ */
 static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
 // PNG signature bytes and data (below)
 static unsigned char kPNGSignatureBytes[8] = {0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A};
@@ -48,9 +50,9 @@ BOOL ImageDataHasPNGPreffix(NSData *data) {
             return YES;
         }
     }
-
     return NO;
 }
+
 
 FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
     return image.size.height * image.size.width * image.scale * image.scale;
@@ -58,7 +60,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
 @interface SDImageCache ()
 
-@property (strong, nonatomic) NSCache *memCache;
+@property (strong, nonatomic) AutoPurgeCache *memCache;
 @property (strong, nonatomic) NSString *diskCachePath;
 @property (strong, nonatomic) NSMutableArray *customPaths;
 @property (SDDispatchQueueSetterSementics, nonatomic) dispatch_queue_t ioQueue;
@@ -68,6 +70,12 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
 @implementation SDImageCache {
     NSFileManager *_fileManager;
+}
+
+NSInteger imageCost(UIImage *imaged){
+    
+    return imaged.size.width *imaged.size.height *imaged.scale *imaged.scale;
+    
 }
 
 + (SDImageCache *)sharedImageCache {

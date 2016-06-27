@@ -25,7 +25,9 @@ static void *wordsImageKey = &wordsImageKey;
     
     UIImageView *mainImageView = [[UIImageView alloc] init];
     
-    mainImageView.image = [UIImage imageNamed:@"lunchBackRound"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"5750f570a3664e0605000540" ofType:@"jpg"];
+    
+    mainImageView.image = [UIImage imageWithContentsOfFile:path];
     
     [mainImageView setFrame:CGRectMake(0, 0, JSFrame.size.width * 3, JSFrame.size.height)];
     
@@ -155,26 +157,29 @@ static void *wordsImageKey = &wordsImageKey;
         
         [self.wordsImageView removeFromSuperview];
         [self.mainImageView removeFromSuperview];
-    
     }
 }
+
 
 #pragma mark - property
 
 -(UIImageView *)mainImageView{
-    return objc_getAssociatedObject(self, &mainImageKey);
+    return objc_getAssociatedObject(self, mainImageKey);
 }
 
 -(void)setMainImageView:(UIImageView *)mainImageView{
-    objc_setAssociatedObject(self, &mainImageKey, mainImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, mainImageKey, mainImageView, OBJC_ASSOCIATION_ASSIGN);
+# warning crash
+    
+    // mainImageView 可能提前释放掉,而且还指向一个错误的类存, 要小心使用,
 }
 
 -(UIImageView *)wordsImageView{
-    return objc_getAssociatedObject(self, &wordsImageKey);
+    return objc_getAssociatedObject(self, wordsImageKey);
 }
 
 -(void)setWordsImageView:(UIImageView *)wordsImageView{
-    objc_setAssociatedObject(self, &wordsImageKey, wordsImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, wordsImageKey, wordsImageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

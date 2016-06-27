@@ -155,7 +155,7 @@
                      */
                     model.TestType = [dic[@"type"] integerValue];;
                     
-                    model.testTime = @"createTime";
+                    model.testTime = dic[@"createtime"];
                     
                     NSString *valueString = dic[@"correct"];
                     NSArray *valueAry = [valueString componentsSeparatedByString:@","];
@@ -176,12 +176,12 @@
 
 
                     
-                    model.diffLevel = @"difficulty";
+                    model.diffLevel = dic[@"difficulty"];
                     
                     model.TestType = [dic[@"type"] integerValue];;
                     
-                    model.testId = @"id";
-                    model.testTime = @"createTime";
+                    model.testId = dic[@"id"];
+                    model.testTime = dic[@"createtime"];
                     
                     switch (model.TestType) {
                         case 1:
@@ -338,10 +338,58 @@
                     }
                 [self.moduleModelArray addObject:model];
                 }
-                
-                
-                
             }
+            
+            /**
+             *  排序没有用的,
+             */
+//            
+//            [self.moduleModelArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//                
+//                showLevelModel *model1 = (showLevelModel *)obj1;
+//                
+//                showLevelModel *model2 = (showLevelModel *)obj2;
+//                
+//                NSString *time1 = model1.testTime;
+//                
+//                NSString *time2 = model2.testTime;
+//                
+//                NSDate *data1 = [NSDate JSDateFromString:time1];
+//                
+//                NSDate *data2 = [NSDate JSDateFromString:time2];
+//                
+//                NSTimeInterval time = [data1 timeIntervalSinceDate:data2];
+//                
+//                if(time > 0) {
+//                    return(NSComparisonResult)NSOrderedAscending;
+//                }else {
+//                    return(NSComparisonResult)NSOrderedDescending;
+//                }
+//                
+//            }];
+//            
+//            
+//            [self.moduleModelArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//                showLevelModel *model1 = (showLevelModel *)obj1;
+//                
+//                showLevelModel *model2 = (showLevelModel *)obj2;
+//                
+//                NSString *time1 = model1.testTime;
+//                
+//                NSString *time2 = model2.testTime;
+//                
+//                NSDate *data1 = [NSDate JSDateFromString:time1];
+//                
+//                NSDate *data2 = [NSDate JSDateFromString:time2];
+//                
+//                NSTimeInterval time = [data1 timeIntervalSinceDate:data2];
+//                
+//                if(time < 0) {
+//                    return(NSComparisonResult)NSOrderedAscending;
+//                }else {
+//                    return(NSComparisonResult)NSOrderedDescending;
+//                }
+//            }];
             [self.tableView.mj_footer endRefreshing];
             
             self.curPage ++;
@@ -418,9 +466,9 @@
 
     NSString *TestTitle = mm.testTitle;
     
-    NSString *dateStr = [NSString stringWithFormat:@"%@",[NSDate date]];
+    NSString *dateStr = [NSString stringWithFormat:@"%@",mm.testTime];
     
-    NSString *headTitle = [NSString stringWithFormat:@"%@ / %@",TestTitle,[dateStr substringToIndex:10]];
+    NSString *headTitle = [NSString stringWithFormat:@"%@ / %@",TestTitle,dateStr];
     
     return headTitle;
 }

@@ -840,7 +840,9 @@ static CGFloat const kVerticalFatLayerWidth = 6;
     } else if ([[anim valueForKey:kName] isEqualToString:@"step4"]) {
         [self doStep5];
     } else if ([[anim valueForKey:kName] isEqualToString:@"step5"]) {
-        [self doStep6Success];
+//        [self doStep6Success];
+        
+        [self endOfLoading];
     }
     
     else if ([[anim valueForKey:kName] isEqualToString:@"step6Fail"]) {
@@ -848,17 +850,21 @@ static CGFloat const kVerticalFatLayerWidth = 6;
     }
     if([[anim valueForKey:kName] isEqualToString:@"fall"]||[[anim valueForKey:kName] isEqualToString:@"success"]){
         
-        if (self.conpletion) {
-        self.conpletion(YES);
-        }
-        
-        [UIView animateWithDuration:0.8 animations:^{
-            self.alpha = 0;
-        } completion:^(BOOL finished) {
-              [self removeFromSuperview];
-        }];
+        [self endOfLoading];
         
     }
+}
+
+-(void)endOfLoading{
+    if (self.conpletion) {
+        self.conpletion(YES);
+    }
+    
+    [UIView animateWithDuration:0.8 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
 }
 
 @end

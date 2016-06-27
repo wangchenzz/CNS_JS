@@ -34,9 +34,7 @@ const static void *animation2Key = &animation2Key;
 @implementation JSBallView
 
 +(instancetype)loding{
-
     return [[self alloc] init];
-
 }
 
 -(instancetype)init{
@@ -112,15 +110,15 @@ const static void *animation2Key = &animation2Key;
 //-(void)setAnimation1:(CABasicAnimation *)animation1{
 //    objc_setAssociatedObject(self, &animation1Key, animation1, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 //}
-//
+
 //-(void)setAnimation2:(CABasicAnimation *)animation2{
 //    objc_setAssociatedObject(self, &animation2Key, animation2, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 //}
-//
+
 //-(CABasicAnimation *)animation1{
 //  return  objc_getAssociatedObject(self, animation1Key);
 //}
-//
+
 //-(CABasicAnimation *)animation2{
 //    return  objc_getAssociatedObject(self, animation2Key);
 //}

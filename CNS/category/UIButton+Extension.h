@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^addBlock)();
+typedef void(^addBlock)(UIButton *but);
 
 @interface UIButton (Extension)
 
+//@property (nonatomic,copy) addBlock doingBlock;
 
 
 /**

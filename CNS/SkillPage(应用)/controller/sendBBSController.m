@@ -9,12 +9,16 @@
 
 #import "sendBBSController.h"
 
+static NSString *const tipslabelString = @"帖子类型尚未选择";
+
 @interface sendBBSController ()
 
 
 @property (nonatomic,retain) UITextField *titleFiled;
 
 @property (nonatomic,retain) UILabel *titleTipsLabel;
+
+@property (nonatomic,retain) UILabel *typeTipsLabel;
 
 @property (nonatomic,retain) UIButton *typeButton;
 
@@ -120,6 +124,9 @@
         
     } );
     
+
+    
+    
     
     self.titleFiled = ({
         
@@ -138,6 +145,8 @@
         self.titleFiled.x = CGRectGetMaxX(self.titleTipsLabel.frame) + xBJ;
         
         self.titleFiled.placeholder = @"此处填写标题";
+        
+        self.titleFiled.textAlignment = NSTextAlignmentCenter;
         
         self.titleFiled.y = self.titleTipsLabel.y;
         
@@ -172,15 +181,39 @@
         
         [self.typeButton setImage:[UIImage imageNamed:@"jiantou-y"] forState:UIControlStateNormal];
         
-        self.typeButton.imageEdgeInsets = UIEdgeInsetsMake(0, 100, 0 , 0);
-        
-        self.typeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0 , 20);
-        
         [self.typeButton addTarget:self action:@selector(chooseTypeAnimation:) forControlEvents:UIControlEventTouchUpInside];
         
         self.typeButton;
         
     });
+    
+    self.typeTipsLabel = ({
+        
+        self.typeTipsLabel = [[UILabel alloc] init];
+        
+        self.typeTipsLabel.width = self.titleFiled.width;
+        
+        self.typeTipsLabel.height = labelHeigt;
+        
+        self.typeTipsLabel.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.3];
+        
+        self.typeTipsLabel.x = self.titleFiled.x;
+        
+        self.typeTipsLabel.y = self.typeButton.y;
+        
+        self.typeTipsLabel.text = tipslabelString;
+        
+        self.typeTipsLabel.textColor = [UIColor whiteColor];
+        
+        self.typeTipsLabel.textAlignment = NSTextAlignmentCenter;
+        
+        self.typeTipsLabel.font = JSFont(16);
+        
+        [self.view addSubview:self.typeTipsLabel];
+        
+        self.typeTipsLabel;
+        
+    } );
     
     self.commentView = ({
         
@@ -229,11 +262,17 @@
     
     self.commentView.layer.cornerRadius = 8;
     
+    self.typeTipsLabel.layer.cornerRadius = 8;
+    
+    self.typeTipsLabel.layer.masksToBounds = YES;
+    
     self.titleTipsLabel.layer.masksToBounds = YES;
     
     self.typeButton.layer.masksToBounds = YES;
+
     
 }
+
 
 -(void)setUpAllButton{
     
@@ -333,7 +372,9 @@
     
     [self showEndAnimation];
     
-    [self.typeButton setTitle:self.typeNameArray[but.tag] forState:UIControlStateNormal];
+//    [self.typeButton setTitle:self.typeNameArray[but.tag] forState:UIControlStateNormal];
+
+    self.typeTipsLabel.text = self.typeNameArray[but.tag];
     
     self.selectType = but.tag;
 }
@@ -415,7 +456,7 @@
 
 -(void)sendBBS:(UIBarButtonItem *)item{
     
-    if (!self.titleFiled.text.length || !self.commentView.text.length || [self.typeButton.titleLabel.text isEqualToString:@"选择类型"]) {
+    if (!self.titleFiled.text.length || !self.commentView.text.length || [self.typeTipsLabel.text isEqualToString:tipslabelString]) {
         [MBProgressHUD showError:@"信息不完整"];
     }else{
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];

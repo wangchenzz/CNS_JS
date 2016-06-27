@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.imageAry = @[@"lunchBackRound",@"lunchBackRound",@"lunchBackRound",@"lunchBackRound"];
+    self.imageAry = @[@"79",@"79",@"79",@"79"];
     
     UIScrollView *scrollview = [[UIScrollView alloc]init];
     
@@ -53,16 +53,11 @@
     pageControl.backgroundColor = [UIColor clearColor];
     pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:255/255.0 green:59/255.0 blue:70/255.0 alpha:1];
     pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
-    //    pageControl.centerX = scrollW * 0.5;
-    //    pageControl.centerY = scrollH - 50;
     [self.view addSubview:pageControl];
     
     self.pagecontrol = pageControl;
     
     for (int i = 0; i < self.imageAry.count; i++) {
-//        UIImageView *inImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.width*i, 0, self.view.width, self.view.height)];
-//        
-//        inImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imageAry[i]]];
 
         animationContainView *inImage = [[animationContainView alloc] init];
         

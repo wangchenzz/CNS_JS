@@ -10,6 +10,8 @@
 
 #import "inputCommentView.h"
 
+static const NSInteger onePageMaxComment = 10;
+
 @interface DetailBBSController ()<UITableViewDelegate,UITableViewDataSource,addCommentControllerDelegate,inputCommentViewDelegate>
 
 @property (nonatomic,retain) NSMutableArray *answerArray;
@@ -55,13 +57,15 @@
     
     [self setUpTableView];
     
-//    [self setUpBBSInfo];
     
     [self setComentButtonUp];
     
     [self setUpInputView];
     
     self.curPage = 1;
+    
+    
+    [self setUpBBSInfo];
     
     __weak __typeof__(self) weakSelf = self;
     
@@ -120,6 +124,10 @@
     
     dic[@"curPage"] = [NSString stringWithFormat:@"%ld",self.curPage];
     
+    if (self.curPage == 1) {
+        [self.answerArray removeAllObjects];
+    }
+    
     [[INetworking shareNet] GET:getCardById withParmers:dic do:^(id returnObject, BOOL isSuccess) {
     
         if (!isSuccess) {
@@ -150,8 +158,6 @@
             
             model.commentID = dic[@"id"];
             
-            
-            
             [model getFrame];
             
             [self.answerArray addObject:model];
@@ -165,7 +171,10 @@
             return;
         }
         
-        self.curPage ++;
+        if (answers.count >= onePageMaxComment) {
+           
+            self.curPage ++;
+        }
         
         [self.tableView reloadData];
         
@@ -177,7 +186,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    [self setUpBBSInfo];
+//    [self setUpBBSInfo];
 
 }
 
@@ -454,24 +463,6 @@
 #pragma mark - vcdelegate  点击发送了评论的回调
 
 -(void)addCommentController:(addCommentController *)comment didSendComment:(NSMutableDictionary *)dic{
-
-//    answerModel *model = [[answerModel alloc] init];
-//    
-//    model.commentContent = dic[@"content"];
-//    
-//    model.commentLoginName = [[NSUserDefaults standardUserDefaults] valueForKey:@"nickName"];
-//    
-//    model.commentCreattime = @"刚刚";
-//    
-//    model.commentHeaderImageSStr = [[NSUserDefaults standardUserDefaults] valueForKey:@"img"];
-//    
-//    model.answerLoginName = (NSString *)[NSNull null];
-//    
-//    
-//
-//    [model getFrame];
-//    
-//    [self.answerArray insertObject:model atIndex:0];
     
     [self setUpBBSInfo];
 

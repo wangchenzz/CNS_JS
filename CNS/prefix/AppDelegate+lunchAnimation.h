@@ -16,7 +16,7 @@
 @property (nonatomic,retain) UIImageView *wordsImageView;
 
 
-@property (nonatomic,retain) UIImageView *mainImageView;
+@property (nonatomic,weak) UIImageView *mainImageView;
 
 -(void)animationComeOn;
 

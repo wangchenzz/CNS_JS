@@ -8,43 +8,48 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const basicUrlStr;
+
+extern NSString * const loginUrl;
+
+extern NSString * const loginUrlForVisitor;
+
+extern NSString * const newsUrl;
+
+extern NSString * const DetailNews;
+
+extern NSString * const LikeAddUrl;
+
+extern NSString * const addComment;
+
+extern NSString * const getQustType;
+
+extern NSString * const addRecord ;
+
+extern NSString * const getRecord;
+
+extern NSString * const getCard;
+
+extern NSString * const getCardById;
+
+extern NSString * const addPlunge;
+
+
+extern NSString * const addAnser;
+
+extern NSString * const addCard;
+
+extern NSString * const getPersonBBs;
+
+extern NSString * const getLeavemsgByPage;
+
+extern NSString * const addSug;
+
+
 @interface INetworking : NSObject
-#define basicUrlStr @"http://www.yueqiao.org/SSM"
 
-#define loginUrl @"http://www.yueqiao.org/SSM/user/getLogin"
+#define uploadHeaderImage @"http://www.yueqiao.org/SSM/sys/upload"
 
-#define newsUrl @"http://www.yueqiao.org/SSM/news/getNewsByType"
-
-#define DetailNews @"http://www.yueqiao.org/SSM/news/selectNewById"
-
-#define LikeAddUrl @"http://www.yueqiao.org/SSM/news/addZan"
-
-#define addComment @"http://www.yueqiao.org/SSM/comment/addComment"
-
-#define getQustType @"http://www.yueqiao.org/SSM/suject/getSubjectByType"
-
-#define addRecord @"http://www.yueqiao.org/SSM/record/addRecord"
-
-#define getRecord @"http://www.yueqiao.org/SSM/record/getRecordByloginName"
-
-
-#define getCard @"http://www.yueqiao.org/SSM/card/getCardByType"
-
-#define getCardById @"http://www.yueqiao.org/SSM/card/selectCardById"
-
-#define addPlunge @"http://www.yueqiao.org/SSM/plunge/addPlunge"
-
-
-#define addAnser @"http://www.yueqiao.org/SSM/plunge/insertPlungeHuifu"
-
-
-#define addCard @"http://www.yueqiao.org/SSM/card/addCard"
-
-#define getPersonBBs @"http://www.yueqiao.org/SSM/card/getCardByLoginName"
-
-#define getLeavemsgByPage @"http://www.yueqiao.org/SSM/leavemsg/getLeavemsgByPage"
-
-#define addSug @"http://www.yueqiao.org/SSM/leavemsg/addleavemsg"
 
 @property (nonatomic,copy) NSString *ipstr;
 
@@ -60,5 +65,8 @@
 -(void)GET:(NSString*)URLString withParmers:(NSDictionary *)parmers do:(void(^)(id returnObject,BOOL isSuccess))myblok;
 
 -(void)POST:(NSString*)object parameters:(id)parameters do:(void(^)(id returnObject,BOOL isSuccess))myblok;
+
+-(void)uploadImageWithName:(NSString *)name URLString:(NSString *)URLString imageData:(NSData *)imageData passCode:(NSString *)code success:(void (^)(id returnObject))success failure:(void (^)(NSError * error))failure;
+
 
 @end
