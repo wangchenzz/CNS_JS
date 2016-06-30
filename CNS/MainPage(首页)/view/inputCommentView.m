@@ -103,7 +103,7 @@
         
         [button setBackgroundImage:[UIImage imageNamed:@"jiantou-y"] forState:UIControlStateNormal];
         
-        button.contentMode = UIViewContentModeScaleAspectFit;
+        button.contentMode = UIViewContentModeCenter;
         
         [self addSubview:button];
         

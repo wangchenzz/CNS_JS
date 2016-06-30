@@ -33,8 +33,6 @@
     
     self.nameRect = CGRectMake(CGRectGetMaxX(self.imageRect) + xbj,  self.imageRect.origin.y, JSFrame.size.width - CGRectGetMaxX(self.imageRect) - xbj - xbj, 21);
     
-    
-    
     CGRect contenR = [self.segContent boundingRectWithSize:CGSizeMake(self.nameRect.size.width, MAXFLOAT) strFont:contentFont];
     
     

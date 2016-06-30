@@ -19,3 +19,12 @@
 -(instancetype)initWithType:(NSInteger)typeNum;
 
 @end
+
+
+@interface MJRefreshGifHeader (loadingAnimation)
+
+@property (nonatomic,retain) UIView *animationView;
+
+-(void)addOneAnimationView:(UIView *)animationView;
+
+@end

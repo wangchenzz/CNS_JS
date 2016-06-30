@@ -120,7 +120,6 @@
  */
 @property (nonatomic,assign) float trueReatctiionTime;
 
-
 /**
  *  持续注意力测试
  */

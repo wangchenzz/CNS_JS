@@ -33,8 +33,6 @@
 		0423B6A31CE309510018E753 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B69C1CE309510018E753 /* MBProgressHUD+MJ.m */; };
 		0423B6A41CE309510018E753 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0423B69D1CE309510018E753 /* MBProgressHUD.bundle */; };
 		0423B6A51CE309510018E753 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B69F1CE309510018E753 /* MBProgressHUD.m */; };
-		0423B6A61CE309510018E753 /* ZYQAssetPicker.Bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0423B6A01CE309510018E753 /* ZYQAssetPicker.Bundle */; };
-		0423B6A71CE309510018E753 /* ZYQAssetPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B6A21CE309510018E753 /* ZYQAssetPickerController.m */; };
 		0423B6AA1CE30E8E0018E753 /* JSNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B6A91CE30E8E0018E753 /* JSNewsModel.m */; };
 		0423B6AD1CE31AF10018E753 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B6AC1CE31AF10018E753 /* NewsCell.m */; };
 		0425DC901CC8A63300D022E3 /* normalShowLevelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425DC8F1CC8A63300D022E3 /* normalShowLevelController.m */; };
@@ -105,13 +103,13 @@
 		04D095971CE4131200DD4011 /* newsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D095961CE4131200DD4011 /* newsDetailController.m */; };
 		04D0959A1CE418AE00DD4011 /* newsDtailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D095991CE418AE00DD4011 /* newsDtailCell.m */; };
 		04D0959D1CE4194400DD4011 /* commentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D0959C1CE4194400DD4011 /* commentCell.m */; };
+		04D3C2ED1D25038B005C9708 /* BezierPathLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D3C2EC1D25038B005C9708 /* BezierPathLogoView.m */; };
 		04E3291E1C86D60600843D08 /* JSLanguageAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3291D1C86D60600843D08 /* JSLanguageAttentionModel.m */; };
 		04E6C3101C89552800A92300 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6C30C1C89552800A92300 /* AppDelegate.m */; };
 		04E6C3111C89552800A92300 /* JSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6C30E1C89552800A92300 /* JSTabBarController.m */; };
 		04E6C3141C895DC300A92300 /* JSVisualAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E6C3131C895DC300A92300 /* JSVisualAttentionModel.m */; };
 		04E6C3161C89800100A92300 /* ImageName.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E6C3151C89800100A92300 /* ImageName.plist */; };
 		04F65D2F1D1CD47500304076 /* NSString+encodeText.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F65D2E1D1CD47500304076 /* NSString+encodeText.m */; };
-		04FDF7CF1D07CC59004C3CFB /* git.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FDF7CE1D07CC59004C3CFB /* git.xcassets */; };
 		04FDF7D51D07EF74004C3CFB /* JSBallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FDF7D41D07EF74004C3CFB /* JSBallView.m */; };
 		95E97B8D9D3F02446DAEC54C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EC3A7BDF7FF8EE799389403 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -185,9 +183,6 @@
 		0423B69D1CE309510018E753 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		0423B69E1CE309510018E753 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		0423B69F1CE309510018E753 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		0423B6A01CE309510018E753 /* ZYQAssetPicker.Bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZYQAssetPicker.Bundle; sourceTree = "<group>"; };
-		0423B6A11CE309510018E753 /* ZYQAssetPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYQAssetPickerController.h; sourceTree = "<group>"; };
-		0423B6A21CE309510018E753 /* ZYQAssetPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYQAssetPickerController.m; sourceTree = "<group>"; };
 		0423B6A81CE30E8E0018E753 /* JSNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSNewsModel.h; sourceTree = "<group>"; };
 		0423B6A91CE30E8E0018E753 /* JSNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSNewsModel.m; sourceTree = "<group>"; };
 		0423B6AB1CE31AF10018E753 /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
@@ -327,6 +322,8 @@
 		04D095991CE418AE00DD4011 /* newsDtailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newsDtailCell.m; sourceTree = "<group>"; };
 		04D0959B1CE4194400DD4011 /* commentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentCell.h; sourceTree = "<group>"; };
 		04D0959C1CE4194400DD4011 /* commentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentCell.m; sourceTree = "<group>"; };
+		04D3C2EB1D25038B005C9708 /* BezierPathLogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierPathLogoView.h; sourceTree = "<group>"; };
+		04D3C2EC1D25038B005C9708 /* BezierPathLogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierPathLogoView.m; sourceTree = "<group>"; };
 		04E3291C1C86D60600843D08 /* JSLanguageAttentionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLanguageAttentionModel.h; sourceTree = "<group>"; };
 		04E3291D1C86D60600843D08 /* JSLanguageAttentionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSLanguageAttentionModel.m; sourceTree = "<group>"; };
 		04E6C30B1C89552800A92300 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -339,7 +336,6 @@
 		04E6C3151C89800100A92300 /* ImageName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ImageName.plist; sourceTree = "<group>"; };
 		04F65D2D1D1CD47500304076 /* NSString+encodeText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encodeText.h"; sourceTree = "<group>"; };
 		04F65D2E1D1CD47500304076 /* NSString+encodeText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encodeText.m"; sourceTree = "<group>"; };
-		04FDF7CE1D07CC59004C3CFB /* git.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = git.xcassets; sourceTree = "<group>"; };
 		04FDF7D31D07EF74004C3CFB /* JSBallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBallView.h; sourceTree = "<group>"; };
 		04FDF7D41D07EF74004C3CFB /* JSBallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBallView.m; sourceTree = "<group>"; };
 		71E70B531ECE1EECF5159E97 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -803,9 +799,6 @@
 				0423B69D1CE309510018E753 /* MBProgressHUD.bundle */,
 				0423B69E1CE309510018E753 /* MBProgressHUD.h */,
 				0423B69F1CE309510018E753 /* MBProgressHUD.m */,
-				0423B6A01CE309510018E753 /* ZYQAssetPicker.Bundle */,
-				0423B6A11CE309510018E753 /* ZYQAssetPickerController.h */,
-				0423B6A21CE309510018E753 /* ZYQAssetPickerController.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -854,7 +847,6 @@
 				041FB96A1C86817800F35659 /* SAT-注意力转移测试 */,
 				041FB9641C86817800F35659 /* CPT-持续注意力测试 */,
 				04B0FED81C8419540020D1A5 /* Assets.xcassets */,
-				04FDF7CE1D07CC59004C3CFB /* git.xcassets */,
 				04B0FEDA1C8419540020D1A5 /* LaunchScreen.storyboard */,
 				04B0FEDD1C8419540020D1A5 /* Info.plist */,
 				04B0FECC1C8419540020D1A5 /* Supporting Files */,
@@ -950,6 +942,8 @@
 				04B0FF381C8420610020D1A5 /* JSWriteAnimationView.m */,
 				041F2DAB1D012DEA007CFE79 /* NSString+Bounding.h */,
 				041F2DAC1D012DEA007CFE79 /* NSString+Bounding.m */,
+				04D3C2EB1D25038B005C9708 /* BezierPathLogoView.h */,
+				04D3C2EC1D25038B005C9708 /* BezierPathLogoView.m */,
 			);
 			name = viewCategory;
 			path = category;
@@ -1107,13 +1101,11 @@
 				04B0FEDC1C8419540020D1A5 /* LaunchScreen.storyboard in Resources */,
 				0438855B1C90237300E1A3E9 /* diamondsXib.xib in Resources */,
 				04E6C3161C89800100A92300 /* ImageName.plist in Resources */,
-				04FDF7CF1D07CC59004C3CFB /* git.xcassets in Resources */,
 				04CE68181CEAB05700D922A5 /* buttonView.xib in Resources */,
 				043EBE341D1922170056F2FF /* 5750f570a3664e0605000540.jpg in Resources */,
 				04B0FED91C8419540020D1A5 /* Assets.xcassets in Resources */,
 				04B0FF021C841B1D0020D1A5 /* Default-568h@2x.png in Resources */,
 				0423B6A41CE309510018E753 /* MBProgressHUD.bundle in Resources */,
-				0423B6A61CE309510018E753 /* ZYQAssetPicker.Bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1192,6 +1184,7 @@
 				04E6C3141C895DC300A92300 /* JSVisualAttentionModel.m in Sources */,
 				04B0FF281C841DEE0020D1A5 /* FirstViewController.m in Sources */,
 				041FB97B1C86825A00F35659 /* JSLanguageAttentionTests.m in Sources */,
+				04D3C2ED1D25038B005C9708 /* BezierPathLogoView.m in Sources */,
 				040730E71C9118D300534773 /* JSKeyBoardView.m in Sources */,
 				0404E3241CF424D3003DE794 /* DetailBBSController.m in Sources */,
 				04CE681B1CEAC6B000D922A5 /* ModuleCell.m in Sources */,
@@ -1272,7 +1265,6 @@
 				0456BBF51CE99056005A22AE /* inputCommentView.m in Sources */,
 				04B0FF1B1C841C720020D1A5 /* UIView+Frame.m in Sources */,
 				0413BCBD1CEEA9550071A105 /* tableHeaderButtonView.m in Sources */,
-				0423B6A71CE309510018E753 /* ZYQAssetPickerController.m in Sources */,
 				048D57641CF4409A009A16BB /* detailInfoCell.m in Sources */,
 				04B0FF3A1C8420610020D1A5 /* eyeView.m in Sources */,
 				0438855E1C90251E00E1A3E9 /* SymbolAndDigit.m in Sources */,

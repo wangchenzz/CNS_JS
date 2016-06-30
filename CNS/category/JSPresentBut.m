@@ -20,9 +20,8 @@
     
     if (self = [super init]) {
         
-        //        [self setUpAl];
-        
         [self setUpAl];
+    
     }
     
     return self;
@@ -34,6 +33,7 @@
         /**
          *  这里会自动调 init 方法;
          */
+        [self setUpAl];
     }
     return self;
 }

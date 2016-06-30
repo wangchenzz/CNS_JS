@@ -21,10 +21,15 @@
 
 @interface tableHeaderButtonView : UIView
 
+/**
+ *  用代理来返回 按钮的标题和个数 并不好. 这样就不能对按钮进行编辑和操作;
+ */
+
 @property (nonatomic,weak) id <tableHeaderButtonViewDelegate> delegare;
 
 @property (nonatomic,assign) NSInteger currentIndex;
 
+@property (nonatomic,retain) UIFont *titleFont;
 
 +(instancetype)getHeader;
 

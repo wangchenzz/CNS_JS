@@ -36,6 +36,13 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
     if (self.setAnimationOn) {
+        _path1 = nil;
+        
+        _animation = nil;
+        
+        CGPoint touchPoint = [[touches anyObject] locationInView:self];
+        
+        [self.path1 addArcWithCenter:touchPoint radius:0.01 startAngle:0 endAngle:M_PI *2 clockwise:YES];
         
         [self.coreLayer addAnimation:self.animation forKey:nil];
     }
@@ -68,7 +75,7 @@
         
         UIBezierPath *path1 =[UIBezierPath bezierPath];
         
-        [path1 addArcWithCenter:self.center radius:0.01 startAngle:0 endAngle:M_PI *2 clockwise:YES];
+//        [path1 addArcWithCenter:self.center radius:0.01 startAngle:0 endAngle:M_PI *2 clockwise:YES];
         
         _path1 = path1;
         
@@ -89,16 +96,24 @@
 }
 
 -(CABasicAnimation *)animation{
-//    if (!_animation) {
+    if (!_animation) {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"path"];
         animation.fromValue = (id) self.path1.CGPath;
         animation.toValue = (id) self.path2.CGPath;
         
         animation.duration = 0.8;
         animation.repeatCount = 1;
+        animation.delegate = self;
         _animation = animation;
-//    }
+    }
     return _animation;
 }
+
+-(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    
+
+}
+
+
 
 @end

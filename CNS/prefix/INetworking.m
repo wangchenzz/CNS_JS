@@ -15,7 +15,8 @@ static INetworking *network;
 
 static BOOL isNetWorking = YES;
 
-NSString * const basicUrlStr = @"http://www.yueqiao.org/SSM";
+
+
 
 NSString * const loginUrl = @"http://www.yueqiao.org/SSM/user/getLogin";
 

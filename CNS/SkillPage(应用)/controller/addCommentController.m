@@ -19,6 +19,8 @@ typedef NS_ENUM(NSInteger,JSEditingState) {
 
 @property (nonatomic,assign) CGFloat kbHeight;
 
+@property (nonatomic,assign) CGFloat visiableViewHeight;
+
 @property (nonatomic,assign) JSEditingState JSEditingState;
 
 @end
@@ -46,6 +48,9 @@ typedef NS_ENUM(NSInteger,JSEditingState) {
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
+    
+    
+    self.visiableViewHeight = self.commentView.height;
     
 }
 
@@ -77,6 +82,7 @@ typedef NS_ENUM(NSInteger,JSEditingState) {
     
     [self.view addSubview:textView];
     
+    
     self.commentView = textView;
 
 }
@@ -96,7 +102,7 @@ typedef NS_ENUM(NSInteger,JSEditingState) {
     
     _kbHeight = keyboardEndFrameWindow.size.height;
     
-    self.commentView.height -= _kbHeight;
+    self.commentView.height =self.visiableViewHeight - _kbHeight;
     
     self.JSEditingState = JSEditingStateEdit;
     
@@ -107,7 +113,7 @@ typedef NS_ENUM(NSInteger,JSEditingState) {
 -(void)hideKeyBoard:(NSNotification *)notification{
     
     
-    self.commentView.height += _kbHeight;
+    self.commentView.height =self.visiableViewHeight + _kbHeight;
     
     
     self.JSEditingState = JSEditingStateNormal;

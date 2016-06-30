@@ -23,23 +23,28 @@
 /**
  *  必须用这个方法来创建. 而且一旦改变 frame 会出问题 ;
  *
- *  @param frame <#frame description#>
+ *  @param frame
  *
- *  @return <#return value description#>
+ *  @return
  */
-
 -(instancetype)initWithFrame:(CGRect)frame{
 
     if (self = [super initWithFrame:frame]) {
         
         [self setUpLayer];
         
-        
         [self setupAnimation];
-        
-        
     }
     return self;
+}
+
+/**
+ *  不要使用这个方法
+ *
+ *  @return <#return value description#>
+ */
+-(instancetype)init{
+    return nil;
 }
 
 

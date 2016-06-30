@@ -14,6 +14,10 @@
 
 #import "ShowSegCell.h"
 
+#import "BBSControllerView.h"
+
+#import "BezierPathLogoView.h"
+
 @interface TheRerunSgViewContoller ()
 
 @end
@@ -23,12 +27,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isRefreshFooter = YES;
-    self.isRefreshHeader = YES;
+//    self.isRefreshHeader = YES;
+    
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(tableViewRefreshHeader)];
+    header.automaticallyChangeAlpha = YES;
+    
+    [header addOneAnimationView:[BezierPathLogoView getLogo]];
+    
+    [header setTitle:@"拖拽以刷新" forState:MJRefreshStateIdle];
+    [header setTitle:@"放开刷新" forState:MJRefreshStatePulling];
+    [header setTitle:@"读取中..." forState:MJRefreshStateRefreshing];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    
+    // 设置字体
+    header.stateLabel.font = [UIFont systemFontOfSize:15];
+    
+    // 设置颜色
+    header.stateLabel.textColor = [UIColor whiteColor];
+    
+    self.tableView.mj_header = header;
+
     self.curpage = 1;
     
     [self setUpButtonItem];
     
     self.title = @"反馈";
+    
 }
 
 #pragma private

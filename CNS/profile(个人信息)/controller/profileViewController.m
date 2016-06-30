@@ -18,6 +18,7 @@
 
 @interface profileViewController ()<UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
+
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) UIView *backView;
@@ -29,7 +30,6 @@
 @property (nonatomic, strong) UIVisualEffectView *visualView;
 @property (nonatomic, strong) UIImageView *icon;
 @property (nonatomic, strong) UILabel *label;
-
 @property (nonatomic, strong) UILabel *anotherLabel;
 @property (nonatomic, assign) CGFloat scale;
 
@@ -48,23 +48,31 @@
 - (void)viewDidLoad {
     
     
-    self.ary = [NSMutableArray array];
     
     [super viewDidLoad];
+    
+    
+    self.ary = [NSMutableArray array];
     self.headerHeight = 300;
     [self setUpHeader];
     
     [self.view addSubview:self.tableView];
     
     [self doImportant];
+
+    
+    
+    
 }
+
+
 -(void)doImportant{
     
     self.oldBackNaviIm = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
     
 
         //去掉底部线条
-        [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
 
@@ -419,6 +427,20 @@
 }
 
 -(void)changeHeaderImage{
+    
+#warning --这个功能因为接口的原因无法完成.
+    
+    
+//    UIWebView *web = [[UIWebView alloc] initWithFrame:self.view.frame];
+//    
+//    [self.view addSubview:web];
+//    
+//    NSString *urlstr = @"http://www.yueqiao.org/SSM/user/toColorGame";
+//    
+//    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlstr]]];
+    return;
+    
+    
     UIAlertController *quitControl = [UIAlertController alertControllerWithTitle:@"更改头像" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     
     //    quitControl.title = @"退出登录!";
@@ -429,7 +451,6 @@
     BOOL isLibray = NO;
     
     BOOL isAlbum = NO;
-    
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {

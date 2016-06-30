@@ -271,6 +271,8 @@
         self.calculateTimer = nil;
         
         self.countDownLabel.text = @"停";
+        self.setAnimationOn = NO;
+        
         
         
         /**

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.commentView.width = self.commentView.width - 10;
+    
     self.commentView.height = self.commentView.height - 10;
     
     self.commentView.x = self.commentView.x + 5;
@@ -24,6 +25,8 @@
     self.commentView.y = self.commentView.y + 5;
     
     self.commentView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.3];
+    
+    
     
 }
 

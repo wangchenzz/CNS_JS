@@ -164,7 +164,7 @@
 
 -(void)returnToLast{
 
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(instancetype)initWithIsModule:(BOOL)mo andWithState:(JSTestCurrentState )state andWithArray:(NSArray *)array andWithdifcultLevel:(NSInteger)level{

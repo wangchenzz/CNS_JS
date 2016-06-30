@@ -18,8 +18,6 @@
         self.imageArray = [NSMutableArray array];
         self.commentArray = [NSMutableArray array];
         self.lmodel = model;
-        
-        
     }
     return self;
 }
@@ -97,11 +95,6 @@
         CGRect textRect = [self.lmodel.content boundingRectWithSize:CGSizeMake(JSFrame.size.width - 4 * keplinth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic2 context:nil];
         
         self.contentRect = CGRectMake(2*keplinth, Bcontent.y, JSFrame.size.width - 4 * keplinth, textRect.size.height);
-        
-        
-
-        
-        
     }
 }
 
@@ -117,18 +110,12 @@
     
     CGRect commentrect = [self.commentNum boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:diccomment context:nil];
     
-    
     self.commentButRect = CGRectMake(10, CGRectGetMaxY(self.contentRect)+40, commentrect.size.width, commentrect.size.height);
-    
-    
-    
     
     CGRect likeRect = [self.likeNum boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:diccomment context:nil];
     
-    
     self.likeTooButRect = CGRectMake(CGRectGetMaxX(self.commentButRect)+10, self.commentButRect.origin.y, likeRect.size.width, likeRect.size.height);
-    
-    
+
     /**
      *  总高度
      */

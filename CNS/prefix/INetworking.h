@@ -8,7 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const basicUrlStr;
+
+#ifdef DEBUG
+//Debug状态下的测试API
+#define basicUrlStr     @"http://www.yueqiao.org/SSM"
+
+#else
+//Release状态下的线上API
+#define basicUrlStr     @"http://www.yueqiao.org/SSM"
+
+#endif
 
 extern NSString * const loginUrl;
 

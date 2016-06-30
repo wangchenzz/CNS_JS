@@ -14,6 +14,93 @@
 
 #import "JSBallView.h"
 
+#import "eyeView.h"
+
+#import "BezierPathLogoView.h"
+
+#import <objc/runtime.h>
+
+
+
+
+@implementation MJRefreshGifHeader (loadingAnimation)
+
+
+-(void)addOneAnimationView:(UIView *)animationView{
+    [self addSubview:animationView];
+    
+    self.animationView = animationView;
+}
+
+- (void)setPullingPercent:(CGFloat)pullingPercent
+{
+    [super setPullingPercent:pullingPercent];
+    
+    BezierPathLogoView *logo = (BezierPathLogoView *)self.animationView;
+    
+    JSLog(@"%ld",(long)self.state);
+    
+//    NSArray *images = self.stateImages[@(MJRefreshStateIdle)];
+    if (self.state != MJRefreshStateIdle) return;
+//    // 停止动画
+    
+    logo.progress = (1-pullingPercent);
+    
+    JSLog(@"%f",pullingPercent);
+    
+//    [self.animationView stop];
+//    // 设置当前需要显示的图片
+//    NSUInteger index =  images.count * pullingPercent;
+//    if (index >= images.count) index = images.count - 1;
+//    self.gifView.image = images[index];
+}
+
+- (void)placeSubviews
+{
+    [super placeSubviews];
+    
+//    
+    self.animationView.frame = self.bounds;
+    if (self.stateLabel.hidden && self.lastUpdatedTimeLabel.hidden) {
+        self.animationView.contentMode = UIViewContentModeCenter;
+    } else {
+        self.animationView.mj_w = 60;
+        self.animationView.mj_x = self.mj_w * .5 - 60 - 60;
+    }
+}
+
+- (void)setState:(MJRefreshState)state
+{
+    MJRefreshCheckState
+    // 根据状态做事情
+//    if (state == MJRefreshStatePulling || state == MJRefreshStateRefreshing) {
+//        NSArray *images = self.stateImages[@(state)];
+//        if (images.count == 0) return;
+//        
+//        [self.gifView stopAnimating];
+//        if (images.count == 1) { // 单张图片
+//            self.gifView.image = [images lastObject];
+//        } else { // 多张图片
+//            self.gifView.animationImages = images;
+//            self.gifView.animationDuration = [self.stateDurations[@(state)] doubleValue];
+//            [self.gifView startAnimating];
+//        }
+//    } else if (state == MJRefreshStateIdle) {
+//        [self.gifView stopAnimating];
+//    }
+    
+}
+
+-(void)setAnimationView:(UIView *)animationView{
+    objc_setAssociatedObject(self, @selector(setAnimationView:), animationView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(UIView *)animationView{
+    return objc_getAssociatedObject(self, @selector(setAnimationView:));
+}
+@end
+
+
 @interface BBSControllerView ()
 
 @property (nonatomic,assign) NSInteger currentPage;
@@ -70,22 +157,17 @@
         [weakSelf.tableView.mj_header beginRefreshing];
         
     }];
-    NSMutableArray *gifArray = [NSMutableArray array];
-    for (int i = 1; i < 11 ; i ++) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i]];
-        [gifArray addObject:image];
-    }
-    
     header.automaticallyChangeAlpha = YES;
     
-//    [header setImages:@[] forState:MJRefreshStateIdle]; /** 普通闲置状态 */
-//    [header setImages:@[] forState:MJRefreshStatePulling]; /** 松开就可以进行刷新的状态 */
-//    [header setImages:gifArray forState:MJRefreshStateRefreshing]; /** 正在刷新中的状态 */
+    [header addOneAnimationView:[BezierPathLogoView getLogo]];
     
+//    [header setImages:ary forState:MJRefreshStateIdle]; /** 普通闲置状态 */
+//    [header setImages:ary forState:MJRefreshStatePulling]; /** 松开就可以进行刷新的状态 */
+//    [header setImages:ary forState:MJRefreshStateRefreshing]; /** 正在刷新中的状态 */
     
     [header setTitle:@"拖拽以刷新" forState:MJRefreshStateIdle];
     [header setTitle:@"放开我就刷新" forState:MJRefreshStatePulling];
-    [header setTitle:@"读取中..." forState:MJRefreshStateRefreshing];
+    [header setTitle:@"读取中." forState:MJRefreshStateRefreshing];
     
     header.lastUpdatedTimeLabel.hidden = YES;
     

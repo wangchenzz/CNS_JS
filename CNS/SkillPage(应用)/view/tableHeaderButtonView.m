@@ -62,9 +62,6 @@
         for (NSString *titleStr in self.titleArray) {
             UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
             [but setTitle:titleStr forState:UIControlStateNormal];
-//            [but setBackgroundImage:[UIImage imageNamed:@"caitao"] forState:UIControlStateNormal];
-            
-            
             [but.titleLabel setFont:JSFont(14)];
             
             [but setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:0.3]];

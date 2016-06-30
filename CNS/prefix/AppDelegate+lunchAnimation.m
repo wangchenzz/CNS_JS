@@ -170,7 +170,6 @@ static void *wordsImageKey = &wordsImageKey;
 -(void)setMainImageView:(UIImageView *)mainImageView{
     objc_setAssociatedObject(self, mainImageKey, mainImageView, OBJC_ASSOCIATION_ASSIGN);
 # warning crash
-    
     // mainImageView 可能提前释放掉,而且还指向一个错误的类存, 要小心使用,
 }
 

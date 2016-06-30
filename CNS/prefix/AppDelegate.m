@@ -32,28 +32,28 @@
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
-//    _isAnimation = YES;
-//    
-//    /**
-//     *  先判断是否是新的版本,  1.是新版本就进入新版界面. 要求登录 进入.....
-//     */
-//    
-//    if ([self decideIsNewVisionCome]) {
-//        /**
-//         *  确定显示新版本的更新
-//         */
-//        _isAnimation = NO;
-//        JSNewVisionViewControler *vc = [[JSNewVisionViewControler alloc] init];
-//        
-//        self.window.rootViewController =vc;
-//        
-//        
-//        [self.window makeKeyAndVisible];
-//        
-//        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(firstVisit) name:@"CNSgameHWMCD" object:nil];
-//        
-//        return YES;
-//    }
+    //    _isAnimation = YES;
+    //
+    //    /**
+    //     *  先判断是否是新的版本,  1.是新版本就进入新版界面. 要求登录 进入.....
+    //     */
+    //
+    //    if ([self decideIsNewVisionCome]) {
+    //        /**
+    //         *  确定显示新版本的更新
+    //         */
+    //        _isAnimation = NO;
+    //        JSNewVisionViewControler *vc = [[JSNewVisionViewControler alloc] init];
+    //
+    //        self.window.rootViewController =vc;
+    //
+    //
+    //        [self.window makeKeyAndVisible];
+    //
+    //        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(firstVisit) name:@"CNSgameHWMCD" object:nil];
+    //
+    //        return YES;
+    //    }
     
     
     [self decideVC];
@@ -79,7 +79,7 @@
     dic[@"token"] = [[NSUserDefaults standardUserDefaults]valueForKey:@"token"];
     
     NSString *tokenStr = dic[@"token"];
-
+    
     if ([tokenStr isEqualToString:@"null"] || !tokenStr.length) {
         
         loginViewController *lc = [[loginViewController alloc] init];
@@ -88,9 +88,9 @@
         
         [self.window makeKeyAndVisible];
         
-//        if (_isAnimation) {
-////            [self animationComeOn];
-//        }
+        //        if (_isAnimation) {
+        ////            [self animationComeOn];
+        //        }
         
     }else{
         
@@ -103,11 +103,7 @@
                 
                 [weakSelf.window makeKeyAndVisible];
                 
-//                if (_isAnimation) {
-//                    [self animationComeOn];
-//                }
-                
-            }else{
+            }else if(!isSuccess){
                 
                 [[NSUserDefaults standardUserDefaults]setValue:@"null" forKey:@"token"];
                 
@@ -117,9 +113,12 @@
                 
                 [weakSelf.window makeKeyAndVisible];
                 
-//                if (_isAnimation) {
-////                    [self animationComeOn];
-//                }
+                //                if (_isAnimation) {
+                ////                    [self animationComeOn];
+                //                }
+            }else{
+            
+                [self decideVC];
             }
         }];
     }

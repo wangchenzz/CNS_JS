@@ -51,6 +51,7 @@
 -(void)setUpPageControll{
     NSDictionary *options =[NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]forKey:UIPageViewControllerOptionSpineLocationKey];
     UIPageViewController *pageViewController = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
+    
     pageViewController.delegate = self;
     pageViewController.dataSource = self;
     [[pageViewController view] setFrame:[[self view] bounds]];
@@ -70,6 +71,8 @@
     self.pvc = pageViewController;
     
     [self.view addSubview:self.headerView];
+    
+    
     
 }
 
@@ -124,7 +127,11 @@
     
 }
 
-
+/**
+ *  创建 tableview header
+ *
+ *  @return ----
+ */
 
 -(tableHeaderButtonView *)headerView{
     if (!_headerView) {
@@ -171,6 +178,9 @@
 }
 
 
+#pragma mark - tableHeader Delegate'   ,.
+
+
 -(void)tableHeaderButtonView:(tableHeaderButtonView *)view didSelecte:(NSInteger)index{
     if (index > view.currentIndex) {
         [self.pvc setViewControllers:@[self.vcArray[index]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
@@ -180,7 +190,7 @@
     }
     self.title = @[@"最新帖子",@"注意力",@"社交能力",@"记忆力",@"阿斯伯格",@"反应能力",@"睡眠",@"冥想"][index];
     
-    BBSControllerView *bb =self.vcArray[index];
+    BBSControllerView *bb = self.vcArray[index];
     
     [bb.tableView.mj_header beginRefreshing];
 }
