@@ -76,7 +76,9 @@
                 }else{
                   bImage = CGRectMake(0, bImage.origin.y+ 1* keplinth + bImage.size.height, JSFrame.size.width, image.size.height * JSFrame.size.width/image.size.width);
                 }
-            [self.imageArray addObject:image];
+                if (finished&&image) {
+                    [self.imageArray addObject:image];
+                }
                 
                 
                 

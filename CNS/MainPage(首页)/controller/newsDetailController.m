@@ -120,6 +120,7 @@ typedef NS_ENUM(NSInteger,JSRefreshState){
 }
 
 
+
 -(inputCommentView *)commentView{
     if (!_commentView) {
         

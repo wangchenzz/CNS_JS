@@ -454,17 +454,17 @@
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        NSLog(@"支持相机");
+        JSLog(@"支持相机");
         isCamera = YES;
     }
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
     {
-        NSLog(@"支持图库");
+        JSLog(@"支持图库");
         isLibray = YES;
     }
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum])
     {
-        NSLog(@"支持相片库");
+        JSLog(@"支持相片库");
         isAlbum = YES;
     }
     
@@ -582,9 +582,9 @@
     valueDic[@"img"] = imageData;
     
     [[INetworking shareNet] uploadImageWithName:@"uploadFirstImage" URLString:uploadHeaderImage imageData:imageData passCode:@"file" success:^(id returnObject) {
-        NSLog(@"%@",returnObject);
+        JSLog(@"%@",returnObject);
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+        JSLog(@"%@",error);
     }];
 }
 

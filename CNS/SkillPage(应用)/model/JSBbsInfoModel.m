@@ -62,12 +62,12 @@
         return  @"刚刚";
     }else if(ms/60/60 == 0){
         
-        NSLog(@"%@",[NSString stringWithFormat:@"%d分钟前",-ms/60]);
+//        NSLog(@"%@",[NSString stringWithFormat:@"%d分钟前",-ms/60]);
         
         return [NSString stringWithFormat:@"%d分钟前",-ms/60];
     }else if(ms/60/60/24 ==0){
         
-        NSLog(@"%@",[NSString stringWithFormat:@"%d小时前",-ms/60/60]);
+//        NSLog(@"%@",[NSString stringWithFormat:@"%d小时前",-ms/60/60]);
         return [NSString stringWithFormat:@"%d小时前",-ms/60/60];
     }else{
         return [_createtime substringWithRange:NSMakeRange(0, 10)];

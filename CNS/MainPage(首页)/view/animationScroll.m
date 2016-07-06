@@ -33,7 +33,11 @@
 
 -(instancetype)init{
     if (self = [super init]) {
+        
         self.currentIndex = 0;
+        
+        self.contentMode = UIViewContentModeScaleAspectFill;
+        self.clipsToBounds = YES;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage)];
         
@@ -88,8 +92,11 @@
     [self.tipsLabel setTextColor:[UIColor whiteColor]];
     self.tipsLabel.text = [self.delegate animationScroll:self textForIndex:self.currentIndex];
     if (_actionTimer) {
+        
     }else{
+        
         [self actionTimer];
+    
     }
 }
 
@@ -148,6 +155,9 @@
 }
 
 -(void)swipImage:(UISwipeGestureRecognizer *)swip{
+    if (self.numberOfCount == 0) {
+        return;
+    }
     if (swip.direction == UISwipeGestureRecognizerDirectionLeft) {
         [self animationOn];
     }else if(swip.direction == UISwipeGestureRecognizerDirectionRight){
@@ -156,7 +166,7 @@
 }
 
 -(void)clickImage{
-    if ([self.delegate respondsToSelector:@selector(animationScroll:didClickInIndex:)]) {
+    if ([self.delegate respondsToSelector:@selector(animationScroll:didClickInIndex:)]&&self.numberOfCount != 0) {
         [self.delegate animationScroll:self didClickInIndex:self.currentIndex];
     }
 }

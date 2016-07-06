@@ -113,9 +113,9 @@ static const NSInteger onePageMaxComment = 10;
 }
 
 -(void)setUpBBSInfo{
-
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
     dic[@"loginName"] = [[NSUserDefaults standardUserDefaults] valueForKey:@"loginName"];
     
     dic[@"token"] = [[NSUserDefaults standardUserDefaults] valueForKey:@"token"];
@@ -123,19 +123,17 @@ static const NSInteger onePageMaxComment = 10;
     dic[@"id"] = self.basicModel.num;
     
     dic[@"curPage"] = [NSString stringWithFormat:@"%ld",self.curPage];
-    
-    if (self.curPage == 1) {
-        [self.answerArray removeAllObjects];
-    }
-    
+
     [[INetworking shareNet] GET:getCardById withParmers:dic do:^(id returnObject, BOOL isSuccess) {
     
         if (!isSuccess) {
             [MBProgressHUD showError:@"连接失败"];
             return ;
         }
-        
-//        self.answerArray = [@[] mutableCopy];
+        if (self.curPage == 1) {
+            [self.answerArray removeAllObjects];
+        }
+        self.answerArray = [self.answerArray subarrayWithRange:NSMakeRange(0, (self.curPage -1 ) * 10)].mutableCopy;
         
         NSArray *answers = returnObject[@"list"];
         
@@ -173,7 +171,7 @@ static const NSInteger onePageMaxComment = 10;
         
         if (answers.count >= onePageMaxComment) {
            
-            self.curPage ++;
+            self.curPage ++;  //修改好了的
         }
         
         [self.tableView reloadData];
@@ -321,9 +319,6 @@ static const NSInteger onePageMaxComment = 10;
             
             b = nil;
             
-//            NSLog(@"%@",v);
-            
-            
             _isAdding = NO;
             
         }];
@@ -345,8 +340,6 @@ static const NSInteger onePageMaxComment = 10;
     [self.navigationController pushViewController:vc animated:YES];
     
     [self writeComment:self.commentButton];
-
-
 }
 
 -(void)setUpInputView{
@@ -542,12 +535,12 @@ static const NSInteger onePageMaxComment = 10;
     
     dic[@"r_content"] = model.answerContent;
     
-    #warning message''成功才显示. 但是要先获得数据.不然可能会发生变化.    碰到异步就要想清楚会发什么什么事情
+    #warning message ' ' 成功才显示. 但是要先获得数据.不然可能会发生变化.    碰到异步就要想清楚会发什么什么事情
     [[INetworking shareNet] GET:addAnser withParmers:dic do:^(id returnObject, BOOL isSuccess) {
        
         if (isSuccess) {
             
-            NSLog(@"%@",returnObject);
+//            NSLog(@"%@",returnObject);
             
             
 

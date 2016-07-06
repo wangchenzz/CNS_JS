@@ -56,6 +56,11 @@
     //    }
     
     
+    /**
+    决定根试图是什么的时候，先要进行判读览，是否包含 token 值。如果未包含，即可直接进入登录界面。
+    如果有 token，且不为空，那就需要把 token 进行验证，验证完毕后才能继续判断。如果发送请求成功且返回登录成功就进入首页，否则进行登录。 --  将 token 直接置空 会造成在没有网络或者服务器出问题的是将用户的信息消除掉了。
+     */
+    
     [self decideVC];
     
     return YES;
@@ -72,6 +77,7 @@
 }
 
 -(void)decideVC{
+    
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     
     dic[@"loginName"] = [[NSUserDefaults standardUserDefaults]valueForKey:@"loginName"];
@@ -103,7 +109,7 @@
                 
                 [weakSelf.window makeKeyAndVisible];
                 
-            }else if(!isSuccess){
+            }else{
                 
                 [[NSUserDefaults standardUserDefaults]setValue:@"null" forKey:@"token"];
                 
@@ -115,10 +121,7 @@
                 
                 //                if (_isAnimation) {
                 ////                    [self animationComeOn];
-                //                }
-            }else{
-            
-                [self decideVC];
+                //
             }
         }];
     }

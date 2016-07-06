@@ -82,7 +82,7 @@
         NSArray *listArray = returnObject[@"list"];
         for (NSDictionary *dic in listArray) {
             
-//                        NSLog(@"%@",dic);
+//                        JSLog(@"%@",dic);
             JSBbsInfoModel *model = [[JSBbsInfoModel alloc] init];
             searchPersonBBsModel *railModel = [[searchPersonBBsModel alloc] init];
             

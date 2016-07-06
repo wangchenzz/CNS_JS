@@ -16,10 +16,7 @@ static INetworking *network;
 static BOOL isNetWorking = YES;
 
 
-
-
 NSString * const loginUrl = @"http://www.yueqiao.org/SSM/user/getLogin";
-
 
 NSString * const loginUrlForVisitor = @"http://www.yueqiao.org/SSM/user/getLogin2";
 
@@ -37,16 +34,13 @@ NSString * const addRecord = @"http://www.yueqiao.org/SSM/record/addRecord";
 
 NSString * const getRecord = @"http://www.yueqiao.org/SSM/record/getRecordByloginName";
 
-
 NSString * const getCard = @"http://www.yueqiao.org/SSM/card/getCardByType";
 
 NSString * const getCardById = @"http://www.yueqiao.org/SSM/card/selectCardById";
 
 NSString * const addPlunge = @"http://www.yueqiao.org/SSM/plunge/addPlunge";
 
-
 NSString * const addAnser = @"http://www.yueqiao.org/SSM/plunge/insertPlungeHuifu";
-
 
 NSString * const addCard = @"http://www.yueqiao.org/SSM/card/addCard";
 
@@ -55,7 +49,6 @@ NSString * const getPersonBBs = @"http://www.yueqiao.org/SSM/card/getCardByLogin
 NSString * const getLeavemsgByPage = @"http://www.yueqiao.org/SSM/leavemsg/getLeavemsgByPage";
 
 NSString * const addSug = @"http://www.yueqiao.org/SSM/leavemsg/addleavemsg";
-
 
 
 @implementation INetworking

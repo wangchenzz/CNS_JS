@@ -164,7 +164,7 @@
     
     self.timeLabel.frame = _model.creatTimeRect;
     
-    for (int i = 0 ;i < _model.imageRectArray.count;i++) {
+    for (int i = 0 ;i < _model.imageArray.count;i++) {
         NSString *rec = _model.imageRectArray[i];
         CGRect re = CGRectFromString(rec);
         

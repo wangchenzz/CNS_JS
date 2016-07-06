@@ -66,7 +66,7 @@
     if (isRefreshHeader != _isRefreshHeader) {
         _isRefreshHeader = isRefreshHeader;
         __weak __typeof__(self) weakSelf = self;
-        if (_isRefreshFooter) {
+        if (_isRefreshHeader) {
             self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
                 [weakSelf tableViewRefreshHeader];
@@ -131,6 +131,7 @@
  */
 -(void)tableViewRefreshHeader{
 
+    
 }
 
 /**
@@ -138,6 +139,7 @@
  */
 -(void)tableViewRefreshFooter{
 
+    
 }
 
 

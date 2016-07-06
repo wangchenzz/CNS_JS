@@ -45,6 +45,10 @@
 
         UIImageView *imageview  = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 80, 80)];
         
+        imageview.contentMode = UIViewContentModeCenter;
+        
+        imageview.clipsToBounds = YES;
+        
         [self.contentView addSubview:imageview];
         
         self.photoInfoImage = imageview;

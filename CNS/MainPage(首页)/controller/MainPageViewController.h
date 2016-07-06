@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JSRefreshTableViewController.h"
 
 #import "animationScroll.h"
 
-@interface MainPageViewController : UITableViewController<animationScrollDelegate>
+@interface MainPageViewController : JSRefreshTableViewController<animationScrollDelegate>
 
 @end

@@ -109,7 +109,6 @@
 
 @property (nonatomic,assign) BOOL isLoading;
 
-
 @end
 
 @implementation BBSControllerView
@@ -192,6 +191,10 @@
 }
 
 
+/**
+ *  只有真正加载到了新的一页才能读取新的一页的东西;
+ */
+
 -(void)loadBBSInfoForHeader:(BOOL)isHeader{
     
     self.isLoading = YES;
@@ -220,6 +223,9 @@
         if (isHeader) {
             [self.dataSourceModelArray removeAllObjects];
         }
+        if (!isHeader) {
+            self.dataSourceModelArray = [self.dataSourceModelArray subarrayWithRange:NSMakeRange(0, (self.currentPage - 1) * 10)].mutableCopy;
+        }
     
         NSArray *listArray = returnObject[@"list"];
         for (NSDictionary *dic in listArray) {
@@ -243,7 +249,9 @@
         if (listArray.count == 0) {
             return;
         }
-        self.currentPage ++;
+        if (listArray.count >= 10) {
+            self.currentPage ++;  //修改好了的
+        }
         [self.tableView reloadData];
         self.isLoading = NO;
         

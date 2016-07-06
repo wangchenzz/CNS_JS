@@ -251,9 +251,8 @@ static NSString *const tipslabelString = @"帖子类型尚未选择";
     
     
     /**
-     *  设置圆角
+     *  设置圆角  
      */
-    
     self.titleTipsLabel.layer.cornerRadius = 8;
     
     self.titleFiled.layer.cornerRadius = 8;
@@ -269,8 +268,6 @@ static NSString *const tipslabelString = @"帖子类型尚未选择";
     self.titleTipsLabel.layer.masksToBounds = YES;
     
     self.typeButton.layer.masksToBounds = YES;
-
-    
 }
 
 
@@ -471,21 +468,20 @@ static NSString *const tipslabelString = @"帖子类型尚未选择";
         dic[@"ctr"] = @"0";
         
         [[INetworking shareNet] GET:addCard withParmers:dic do:^(id returnObject, BOOL isSuccess) {
-            
             if (isSuccess) {
-                
                 [self.navigationController popViewControllerAnimated:YES];
-                
             }else{
                 [MBProgressHUD showError:@"发送失败"];
-                
             }
-            
         }];
-        
     }
 }
 
 
 
 @end
+
+
+
+
+//masery 一款轻量级的页面布局的框架.  可以以链式语言优雅的对页面进行布局,  代码易于阅读.
