@@ -290,8 +290,7 @@
             NSString *mobile = dic[@"mobile"];
             NSString *img = dic[@"img"];
             NSString *nickName = dic[@"nickName"];
-            
-            
+           
             [[NSUserDefaults standardUserDefaults] setObject:personToken forKey:@"token"];
             [[NSUserDefaults standardUserDefaults] setObject:loginName forKey:@"loginName"];
             [[NSUserDefaults standardUserDefaults] setObject:mobile forKey:@"mobile"];
@@ -305,22 +304,20 @@
              *  这里进行跳转
              */
             
+//           [MBProgressHUD showError:@"please dont say this"];
+//           NSString *lonlyWords = @"hello hello~ kamisama dududuududududduddududu÷"
             
-            //            [self.tabBarController setSelectedIndex:1];
+//           [self.tabBarController setSelectedIndex:1];
             JSTabBarController *jstc = [[JSTabBarController alloc]init];
             [UIApplication sharedApplication].keyWindow.rootViewController = jstc;
-            
+
             [[UIApplication sharedApplication].keyWindow makeKeyAndVisible];
-            
         }else{
-            
             [MBProgressHUD hideHUD];
             self.passCodeText.text = @"";
             [self.tipsLabel setText:@"登陆失败"];
-            
         }
     }];
-    
 }
 
 
@@ -331,7 +328,6 @@
         [self.passCodeText becomeFirstResponder];
     }else{
         [self.passCodeText resignFirstResponder];       }
-    
     return YES;
 }
 

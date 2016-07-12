@@ -18,7 +18,24 @@ static void *wordsImageKey = &wordsImageKey;
 @implementation AppDelegate (lunchAnimation)
 
 -(void)animationComeOn{
-    [self doStep1];
+    [self doanimation];
+}
+
+-(void)doanimation{
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:JSFrame];
+    
+    imageview.image = [UIImage imageNamed:@"qidong"];
+    
+    imageview.contentMode = UIViewContentModeCenter;
+    
+    UIViewController *lunchVc = [[UIViewController alloc] init];
+    
+    lunchVc.view.backgroundColor = [UIColor whiteColor];
+    
+    [lunchVc.view addSubview:imageview];
+    
+    self.window.rootViewController = lunchVc;
+    [self.window makeKeyAndVisible];
 }
 
 -(void)doStep1{

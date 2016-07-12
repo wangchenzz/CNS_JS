@@ -61,6 +61,8 @@
     如果有 token，且不为空，那就需要把 token 进行验证，验证完毕后才能继续判断。如果发送请求成功且返回登录成功就进入首页，否则进行登录。 --  将 token 直接置空 会造成在没有网络或者服务器出问题的是将用户的信息消除掉了。
      */
     
+    [self animationComeOn];
+    
     [self decideVC];
     
     return YES;
@@ -71,7 +73,6 @@
 -(JSTabBarController *)mainViewController{
     if (!_mainViewController) {
         _mainViewController = [[JSTabBarController alloc] init];
-        
     }
     return _mainViewController;
 }
@@ -93,11 +94,6 @@
         self.window.rootViewController = lc;
         
         [self.window makeKeyAndVisible];
-        
-        //        if (_isAnimation) {
-        ////            [self animationComeOn];
-        //        }
-        
     }else{
         
         __weak __typeof__(self) weakSelf = self;
@@ -118,10 +114,6 @@
                 weakSelf.window.rootViewController = lc;
                 
                 [weakSelf.window makeKeyAndVisible];
-                
-                //                if (_isAnimation) {
-                ////                    [self animationComeOn];
-                //
             }
         }];
     }
@@ -131,6 +123,7 @@
 -(void)firstVisit{
     
     [[NSNotificationCenter defaultCenter]removeObserver:self name:@"CNSgameHWMCD" object:nil];
+    
     [self decideVC];
 }
 
@@ -150,7 +143,6 @@
 }
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window{
-    
     /**
      *  禁止 iPad 横屏;
      */

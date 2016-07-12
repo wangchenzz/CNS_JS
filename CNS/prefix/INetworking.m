@@ -124,7 +124,6 @@ NSString * const addSug = @"http://www.yueqiao.org/SSM/leavemsg/addleavemsg";
     session.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
     
     session.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    
     [session GET:URLString parameters:parmers progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

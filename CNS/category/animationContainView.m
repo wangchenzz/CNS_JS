@@ -60,5 +60,7 @@
     self.picture.transform = transX;
 }
 
+//焰
+
 
 @end

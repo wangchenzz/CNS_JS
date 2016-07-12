@@ -30,6 +30,7 @@
 		041F2DB31D0154DB007CFE79 /* testBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 041F2DB21D0154DB007CFE79 /* testBaseView.m */; };
 		041F2DB91D016F0B007CFE79 /* AppDelegate+lunchAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 041F2DB81D016F0B007CFE79 /* AppDelegate+lunchAnimation.m */; };
 		041FB97B1C86825A00F35659 /* JSLanguageAttentionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 041FB97A1C86825A00F35659 /* JSLanguageAttentionTests.m */; };
+		0423A23A1D34839200AD92B4 /* tousuJubaoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423A2391D34839200AD92B4 /* tousuJubaoController.m */; };
 		0423B6A31CE309510018E753 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B69C1CE309510018E753 /* MBProgressHUD+MJ.m */; };
 		0423B6A41CE309510018E753 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0423B69D1CE309510018E753 /* MBProgressHUD.bundle */; };
 		0423B6A51CE309510018E753 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0423B69F1CE309510018E753 /* MBProgressHUD.m */; };
@@ -178,6 +179,8 @@
 		041F2DB81D016F0B007CFE79 /* AppDelegate+lunchAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+lunchAnimation.m"; sourceTree = "<group>"; };
 		041FB9791C86825A00F35659 /* JSLanguageAttentionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLanguageAttentionTests.h; sourceTree = "<group>"; };
 		041FB97A1C86825A00F35659 /* JSLanguageAttentionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSLanguageAttentionTests.m; sourceTree = "<group>"; };
+		0423A2381D34839200AD92B4 /* tousuJubaoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tousuJubaoController.h; sourceTree = "<group>"; };
+		0423A2391D34839200AD92B4 /* tousuJubaoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tousuJubaoController.m; sourceTree = "<group>"; };
 		0423B69B1CE309510018E753 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		0423B69C1CE309510018E753 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		0423B69D1CE309510018E753 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -443,6 +446,8 @@
 				0480E8351D001224007304F8 /* TheRerunSgViewContoller.m */,
 				041F2DAE1D0136BA007CFE79 /* addSUGController.h */,
 				041F2DAF1D0136BA007CFE79 /* addSUGController.m */,
+				0423A2381D34839200AD92B4 /* tousuJubaoController.h */,
+				0423A2391D34839200AD92B4 /* tousuJubaoController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1240,6 +1245,7 @@
 				04CE68331CEB0F4700D922A5 /* starView.m in Sources */,
 				04A0690E1D06976C009CA4CC /* animationContainView.m in Sources */,
 				04D0959D1CE4194400DD4011 /* commentCell.m in Sources */,
+				0423A23A1D34839200AD92B4 /* tousuJubaoController.m in Sources */,
 				04B0FF3E1C8420610020D1A5 /* JSWriteAnimationView.m in Sources */,
 				0423B6AA1CE30E8E0018E753 /* JSNewsModel.m in Sources */,
 				040F2C4E1C99588D00C5A929 /* StroopModel.m in Sources */,

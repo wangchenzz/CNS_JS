@@ -14,6 +14,8 @@
 
 #import "TheRerunSgViewContoller.h"
 
+#import "tousuJubaoController.h"
+
 #import <AVFoundation/AVFoundation.h>
 
 @interface profileViewController ()<UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -271,7 +273,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return 4;
 }
 
 
@@ -339,6 +341,10 @@
             im.image = [UIImage imageNamed:@"setting"];
             la.text = @"设置";
             break;
+        case 3:
+            im.tintColor = [UIColor whiteColor];
+            im.image = [UIImage imageWithRenderNamed:@"cp1"];
+            la.text = @"投诉,举报";
         default:
             break;
     }
@@ -410,6 +416,15 @@
     else if (indexPath.row == 0) {
         
         ShowPersonalBBSViewController *spb = [[ShowPersonalBBSViewController alloc] init];
+        
+        spb.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:spb animated:YES];
+    }
+    
+    else if (indexPath.row == 3) {
+        
+        tousuJubaoController *spb = [[tousuJubaoController alloc] init];
         
         spb.hidesBottomBarWhenPushed = YES;
         

@@ -19,7 +19,6 @@ static JSUserManager *shareManager = nil;
 
 @implementation JSUserManager
 
-
 + (instancetype)shareManager{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -41,6 +40,7 @@ static JSUserManager *shareManager = nil;
     dic[@"token"] = [_defaults objectForKey:@"token"];
     return dic;
 }
+
 
 
 @end

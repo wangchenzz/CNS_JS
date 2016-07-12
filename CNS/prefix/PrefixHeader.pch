@@ -39,7 +39,6 @@
 
 #define WeakObject(o) __weak __typeof(o) o##Weak = o;
 
-
 #import "testBaseView.h"
 
 #import "NSString+encodeText.h"
@@ -81,6 +80,5 @@
 #import "UITableViewController+Extension.h"
 
 #import <UIKit/UIKit.h>
-
 
 #endif /* PrefixHeader_pch */

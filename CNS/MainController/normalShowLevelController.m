@@ -25,7 +25,6 @@
     
     self.tableView.separatorStyle = NO;
     
-    
     self.navigationController.navigationBar.hidden = NO;
     
 }

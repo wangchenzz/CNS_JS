@@ -15,9 +15,6 @@ NSString *Base64String(NSString *a);
 @interface NSString (encodeText)
 
 
-
-
-
 -(NSString *)encodeForBase64;
 
 

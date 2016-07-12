@@ -104,6 +104,7 @@
 
 
     [[UITabBarItem appearance] setTitleTextAttributes:selectAttri forState:UIControlStateSelected];
+    
     [[UITabBarItem appearance] setTitleTextAttributes:normalAttri forState:UIControlStateNormal];
     
     
