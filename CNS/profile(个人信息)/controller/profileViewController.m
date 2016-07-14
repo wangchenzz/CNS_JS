@@ -54,7 +54,7 @@
     [super viewDidLoad];
     
     
-    self.ary = [NSMutableArray array];
+//    self.ary = [NSMutableArray array];
     self.headerHeight = 300;
     [self setUpHeader];
     
@@ -69,10 +69,8 @@
 
 
 -(void)doImportant{
-    
-    self.oldBackNaviIm = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
-    
 
+    self.oldBackNaviIm = [self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault];
         //去掉底部线条
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }

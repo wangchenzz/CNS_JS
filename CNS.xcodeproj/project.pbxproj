@@ -44,7 +44,6 @@
 		0438855B1C90237300E1A3E9 /* diamondsXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0438855A1C90237300E1A3E9 /* diamondsXib.xib */; };
 		0438855E1C90251E00E1A3E9 /* SymbolAndDigit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0438855D1C90251E00E1A3E9 /* SymbolAndDigit.m */; };
 		043885611C9027E200E1A3E9 /* SymbolDigitsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043885601C9027E200E1A3E9 /* SymbolDigitsModel.m */; };
-		043EBE341D1922170056F2FF /* 5750f570a3664e0605000540.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 043EBE331D1922170056F2FF /* 5750f570a3664e0605000540.jpg */; };
 		043FD7111CF5927600B48DFC /* sendBBSController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FD7101CF5927600B48DFC /* sendBBSController.m */; };
 		043FD7141CF5962700B48DFC /* addCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043FD7131CF5962700B48DFC /* addCommentController.m */; };
 		0456BBF01CE9649D005A22AE /* JSComentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0456BBEF1CE9649D005A22AE /* JSComentModel.m */; };
@@ -205,7 +204,6 @@
 		0438855D1C90251E00E1A3E9 /* SymbolAndDigit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolAndDigit.m; sourceTree = "<group>"; };
 		0438855F1C9027E200E1A3E9 /* SymbolDigitsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolDigitsModel.h; sourceTree = "<group>"; };
 		043885601C9027E200E1A3E9 /* SymbolDigitsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolDigitsModel.m; sourceTree = "<group>"; };
-		043EBE331D1922170056F2FF /* 5750f570a3664e0605000540.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5750f570a3664e0605000540.jpg; sourceTree = "<group>"; };
 		043FD70F1CF5927600B48DFC /* sendBBSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sendBBSController.h; sourceTree = "<group>"; };
 		043FD7101CF5927600B48DFC /* sendBBSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sendBBSController.m; sourceTree = "<group>"; };
 		043FD7121CF5962700B48DFC /* addCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addCommentController.h; sourceTree = "<group>"; };
@@ -961,7 +959,6 @@
 				0475605D1CC7504F00CFD065 /* INetworking.m */,
 				04E6C30B1C89552800A92300 /* AppDelegate.h */,
 				04E6C30C1C89552800A92300 /* AppDelegate.m */,
-				043EBE331D1922170056F2FF /* 5750f570a3664e0605000540.jpg */,
 				041F2DB71D016F0B007CFE79 /* AppDelegate+lunchAnimation.h */,
 				041F2DB81D016F0B007CFE79 /* AppDelegate+lunchAnimation.m */,
 				0480E8281CFFD398007304F8 /* AppDelegate+NewVision.h */,
@@ -1107,7 +1104,6 @@
 				0438855B1C90237300E1A3E9 /* diamondsXib.xib in Resources */,
 				04E6C3161C89800100A92300 /* ImageName.plist in Resources */,
 				04CE68181CEAB05700D922A5 /* buttonView.xib in Resources */,
-				043EBE341D1922170056F2FF /* 5750f570a3664e0605000540.jpg in Resources */,
 				04B0FED91C8419540020D1A5 /* Assets.xcassets in Resources */,
 				04B0FF021C841B1D0020D1A5 /* Default-568h@2x.png in Resources */,
 				0423B6A41CE309510018E753 /* MBProgressHUD.bundle in Resources */,

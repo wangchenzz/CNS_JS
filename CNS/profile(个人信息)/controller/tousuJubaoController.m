@@ -30,11 +30,14 @@
     
     self.placeLabel.textColor = [UIColor darkGrayColor];
     
+    self.placeLabel.textAlignment = NSTextAlignmentLeft;
+    
     self.placeLabel.frame = self.commentView.frame;
     
     [self.view addSubview:self.placeLabel];
     
     self.commentView.delegate = self;
+    
 }
 
 
